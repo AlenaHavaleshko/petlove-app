@@ -1,0 +1,47 @@
+.pet_form {
+  border-radius: 30px;
+  background: #fff;
+  padding: 28px 20px 20px 20px;
+  margin: 0 auto;
+  max-width: 335px;
+}
+
+.form_title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  margin-bottom: 24px;
+}
+
+.form_span {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  color: rgba(43, 43, 42, 0.4);
+}
+
+.form_box_icons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.form_icon_first {
+  background: rgba(244, 63, 94, 0.1);
+  border-radius: 30px;
+  padding: 6px;
+}
+
+.form_icon_second {
+  background: rgba(84, 173, 255, 0.1);
+  border-radius: 30px;
+  padding: 6px;
+}
+
+.form_icon_third {
+  background: #fff4df;
+  border-radius: 30px;
+  padding: 6px;
+}

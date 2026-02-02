@@ -1,0 +1,25 @@
+.pet_block {
+  border-radius: 30px;
+  max-width: 335px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.pet_block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .pet_block {
+    border-radius: 60px;
+    max-width: 704px;
+    display: flex;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

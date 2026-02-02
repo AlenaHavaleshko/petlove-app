@@ -1,0 +1,205 @@
+.mobile_menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.mobile_menu_orange {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #f6b83d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.mobile_mop {
+  position: relative;
+  padding: 0 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-height: 100%;
+}
+
+.mobile_btn_close {
+  cursor: pointer;
+  position: absolute;
+  top: 28px;
+  right: 20px;
+}
+
+.mobile_close_icon {
+  stroke-width: 3px;
+  stroke: #262626;
+}
+
+.mobile_close_icon_orange {
+  stroke-width: 3px;
+  stroke: #fff;
+}
+
+.mobile_nav {
+  margin-top: 236px;
+  margin-bottom: 280px;
+}
+
+.mobile_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 119px;
+  margin: 0 auto;
+}
+
+.mobile_item {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.mobile_item_orange {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.mobile_item:hover {
+  border: 1px solid #f6b83d;
+}
+
+.mobile_link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
+.mobile_link_orange {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.mobile_btns {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile_registration {
+  background: #fff4df;
+  border-radius: 30px;
+  padding: 12px 41px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f6b83d;
+  cursor: pointer;
+}
+
+.mobile_registration:hover {
+  background: #fbe7c1;
+}
+
+.mobile_logout,
+.mobile_login {
+  background: #f6b83d;
+  border-radius: 30px;
+  padding: 12px 67px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+}
+
+.mobile_logout_orange,
+.mobile_login_orange {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #f6b83d;
+  border-radius: 30px;
+  padding: 12px 0;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .mobile_mop {
+    padding: 39px 32px;
+  }
+
+  .mobile_btn_close {
+    top: 39px;
+    right: 32px;
+  }
+
+  .mobile_close_icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .mobile_list {
+    max-width: 120px;
+  }
+
+  .mobile_link {
+    font-size: 16px;
+  }
+
+  .mobile_link_orange {
+    font-size: 16px;
+  }
+
+  .mobile_btns {
+    flex-direction: row;
+  }
+
+  .mobile_registration {
+    font-size: 16px;
+  }
+
+  .mobile_logout,
+  .mobile_login {
+    font-size: 16px;
+  }
+
+  .mobile_logout_orange,
+  .mobile_login_orange {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mobile_menu {
+    display: none;
+  }
+}

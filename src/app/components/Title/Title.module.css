@@ -1,0 +1,59 @@
+.title {
+  background: #fff;
+  border-radius: 20px;
+  padding: 19px 16px 18px 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.title_icon {
+  border-radius: 100%;
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.img_cat {
+  display: block;
+  overflow: hidden;
+}
+
+.title_info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 194px;
+}
+
+.title_info_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+}
+
+.title_birthday {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.title_span {
+  color: #262626;
+}
+
+.title_text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.8);
+}

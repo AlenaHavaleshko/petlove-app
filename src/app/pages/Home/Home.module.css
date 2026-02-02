@@ -1,0 +1,135 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.home_top {
+  padding: 118px 20px 0 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #f6b83d;
+  border-radius: 30px;
+}
+
+.home_box_title {
+  margin-bottom: 24px;
+  max-width: 295px;
+}
+
+.home_title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 96%;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.home_span {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.home_text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #fff;
+  max-width: 295px;
+}
+
+.home_top,
+.home_bottom {
+  flex: 1;
+  height: 50vh;
+}
+
+.home_bottom {
+  border-radius: 30px;
+  background-image: url(/home/home.mobile1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media screen and (min-resolution: 2dppx) {
+  .home_bottom {
+    background-image: url(/home/home.mobile2.jpg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home_top {
+    padding: 178px 32px 0 32px;
+  }
+
+  .home_box_title {
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+
+  .home_title {
+    font-size: 80px;
+    line-height: 96%;
+  }
+
+  .home_box_text {
+    position: absolute;
+    right: 32px;
+    bottom: 44px;
+  }
+
+  .home_text {
+    font-size: 18px;
+    max-width: 255px;
+  }
+
+  .home_bottom {
+    background-image: url(/home/home.tablet1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @media screen and (min-resolution: 2dppx) {
+    .home_bottom {
+      background-image: url(/home/home.tablet2.jpg);
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .home_top {
+    padding: 178px 64px 32px 64px;
+  }
+
+  .home_box_title {
+    max-width: 760px;
+    margin-bottom: 0;
+    margin-right: 73px;
+    position: absolute;
+    left: 32px;
+    bottom: 44px;
+  }
+
+  .home_title {
+    font-size: 90px;
+    line-height: 97%;
+  }
+
+  .home_bottom {
+    background-image: url(/home/home.desktop1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @media screen and (min-resolution: 2dppx) {
+    .home_bottom {
+      background-image: url(/home/home.desktop2.jpg);
+    }
+  }
+}

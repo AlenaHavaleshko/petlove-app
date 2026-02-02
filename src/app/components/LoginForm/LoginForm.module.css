@@ -1,0 +1,184 @@
+.form_box {
+  padding: 55px 20px;
+  border-radius: 30px;
+  background: #fff;
+  margin: 0 auto;
+  max-width: 335px;
+}
+
+.form_info {
+  margin-bottom: 24px;
+}
+
+.form_title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.form_text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+.form_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.form_input {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px;
+  width: 100%;
+}
+
+.input::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.password_wrapper {
+  position: relative;
+}
+
+.password_btn_eyes {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: block;
+}
+
+.password_eye_icon,
+.password_eye_icon_off {
+  stroke-width: 1.5px;
+  stroke: #f6b83d;
+  fill: none;
+}
+
+.form_box_btn {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.form_btn {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 30px;
+  padding: 12px;
+  background: #f6b83d;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.form_btn:hover {
+  background: #fff4df;
+  color: #f6b83d;
+}
+
+.form_link {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+  text-align: center;
+}
+
+.form_link_text {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #f6b83d;
+}
+
+@media screen and (min-width: 768px) {
+  .form_box {
+    border-radius: 60px;
+    padding: 71px 140px;
+    max-width: 704px;
+    box-sizing: border-box;
+  }
+
+  .form_title {
+    font-size: 54px;
+    margin-bottom: 16px;
+  }
+
+  .form_info {
+    margin-bottom: 32px;
+  }
+
+  .form_text {
+    font-size: 18px;
+  }
+
+  .form_wrapper {
+    margin-bottom: 50px;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
+  }
+
+  .form_input {
+    border: 1px solid rgba(38, 38, 38, 0.15);
+    border-radius: 30px;
+    padding: 16px;
+    width: 100%;
+  }
+
+  .password_eye_icon,
+  .password_eye_icon_off {
+    width: 22px;
+    height: 22px;
+  }
+
+  .form_wrapper {
+    gap: 30px;
+  }
+
+  .form_btn {
+    font-size: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .form_link {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .form_box {
+    padding: 114px 84px;
+    max-width: 592px;
+    width: 100%;
+  }
+
+  .form_wrapper {
+    gap: 30px;
+  }
+
+  .form_wrapper {
+    margin-bottom: 58px;
+  }
+}
