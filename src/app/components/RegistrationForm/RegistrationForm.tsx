@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/useAuth";
 
 interface RegistrationFormData {
   name: string;
@@ -26,10 +27,19 @@ export const Schema = Yup.object().shape({
 
 export function RegistrationForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const { register } = useForm<RegistrationFormData>({
+  const { register, handleSubmit } = useForm<RegistrationFormData>({
     resolver: yupResolver(Schema),
   });
+
+  const onSubmit = (data: RegistrationFormData) => {
+    // Здесь должен быть реальный API вызов
+    login({ name: data.name, email: data.email });
+    navigate("/home");
+  };
+
   return (
     <div className={css.form_box}>
       <div className={css.form_info}>
@@ -38,7 +48,7 @@ export function RegistrationForm() {
           Thank you for your interest in our platform.
         </p>
       </div>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.form_wrapper}>
           <input
             {...register("name")}
@@ -75,7 +85,7 @@ export function RegistrationForm() {
             <input
               {...register("password")}
               className={css.form_input}
-              type="text"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
             />
           </div>
@@ -102,7 +112,7 @@ export function RegistrationForm() {
             <input
               {...register("password")}
               className={css.form_input}
-              type="text"
+              type={showPassword ? "text" : "password"}
               placeholder="Confirm password"
             />
           </div>

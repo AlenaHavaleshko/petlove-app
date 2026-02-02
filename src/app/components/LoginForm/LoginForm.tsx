@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/useAuth";
 
 interface LoginFormData {
   email: string;
@@ -24,10 +25,20 @@ export const Schema = Yup.object().shape({
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const { register } = useForm<LoginFormData>({
+  const { register, handleSubmit } = useForm<LoginFormData>({
     resolver: yupResolver(Schema),
   });
+
+  const onSubmit = (data: LoginFormData) => {
+    // Здесь должен быть реальный API вызов
+    // Для демонстрации используем email как имя
+    const userName = data.email.split("@")[0];
+    login({ name: userName, email: data.email });
+    navigate("/home");
+  };
 
   return (
     <div className={css.form_box}>
@@ -37,7 +48,7 @@ function LoginForm() {
           Welcome! Please enter your credentials to login to the platform:
         </p>
       </div>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.form_wrapper}>
           <input
             {...register("email")}
@@ -68,14 +79,14 @@ function LoginForm() {
             <input
               {...register("password")}
               className={css.form_input}
-              type="text"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
             />
           </div>
         </div>
         <div className={css.form_box_btn}>
           <button className={css.form_btn} type="submit">
-            Registration
+            Log In
           </button>
           <p className={css.form_link}>
             Don’t have an account?{" "}

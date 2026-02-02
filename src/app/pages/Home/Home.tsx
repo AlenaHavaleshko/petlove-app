@@ -5,7 +5,6 @@ function Home() {
     <div className={css.home}>
       <div className="container">
         <div className={css.home_top}>
-          <div className="container"></div>
           <div className={css.home_box_title}>
             <h1 className={css.home_title}>
               Take good <span className={css.home_span}>care</span> of your

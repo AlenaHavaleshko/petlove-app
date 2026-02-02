@@ -5,6 +5,7 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
+
 }
 
 .header {
@@ -84,75 +85,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 }
 
-.header_login,
-.header_registration,
-.header_logout {
-  display: none;
-}
-
-.header_registration {
-  background: #fff4df;
-  border-radius: 30px;
-  padding: 15px 20px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 125%;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: #f6b83d;
-  margin-right: 8px;
-}
-
-.header_registration:hover {
-  background: #fbe7c1;
-}
-
-.header_logout,
-.header_login {
-  background: #f6b83d;
-  border-radius: 30px;
-  padding: 15px 35px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 125%;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: #fff;
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-.header_logout:hover,
-.header_login:hover {
-  background: #fff4df;
-  color: #f6b83d;
-}
-
-.header_user_menu {
-  border-radius: 100%;
-  padding: 10px;
-  background-color: #fff4df;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header_user_menu:hover {
-  background: #fbe7c1;
-}
-
-.header_icon_user {
-  display: block;
-  fill: #f6b83d;
-}
-
-.header_menu_btn {
+.header_menu_btn,
+.header_menu_btn_home {
   cursor: pointer;
   border: none;
   margin-left: 12px;
   padding: 0;
+  background: transparent;
 }
 
 .header_icon_btn_home {
@@ -173,22 +115,8 @@
     padding-bottom: 32px;
   }
 
-  .header_login,
-  .header_registration,
-  .header_logout {
-    display: flex;
-  }
-
-  .header_user_menu {
-    padding: 13px;
-  }
-
-  .header_icon_user {
-    width: 24px;
-    height: 24px;
-  }
-
-  .header_menu_btn {
+  .header_menu_btn,
+  .header_menu_btn_home {
     margin-left: 16px;
   }
 

@@ -26,6 +26,8 @@
   line-height: 96%;
   letter-spacing: -0.03em;
   color: #fff;
+  padding-left: 31px;
+  
 }
 
 .home_span {
@@ -34,11 +36,12 @@
 
 .home_text {
   font-weight: 500;
-  font-size: 14px;
-  line-height: 129%;
+  font-size: 18px;
+  line-height: 22px;
   letter-spacing: -0.02em;
   color: #fff;
-  max-width: 295px;
+  max-width: 255px;
+  padding-right: 11px;
 }
 
 .home_top,

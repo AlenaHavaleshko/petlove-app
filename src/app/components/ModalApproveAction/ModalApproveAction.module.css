@@ -1,0 +1,136 @@
+.modal_backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(38, 38, 38, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 30px;
+  padding: 40px 20px;
+  max-width: 335px;
+  width: 100%;
+  position: relative;
+}
+
+.modal_close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_close_icon {
+  stroke: #262626;
+  width: 24px;
+  height: 24px;
+}
+
+.modal_close:hover .modal_close_icon {
+  stroke: #f6b83d;
+}
+
+.modal_title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #262626;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal_message {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.6);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.modal_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal_btn_confirm,
+.modal_btn_cancel {
+  border-radius: 30px;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+}
+
+.modal_btn_confirm {
+  background: #f6b83d;
+  color: #fff;
+}
+
+.modal_btn_confirm:hover {
+  background: #fff4df;
+  color: #f6b83d;
+}
+
+.modal_btn_cancel {
+  background: rgba(38, 38, 38, 0.05);
+  color: #262626;
+}
+
+.modal_btn_cancel:hover {
+  background: rgba(38, 38, 38, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    padding: 60px 40px;
+    max-width: 448px;
+  }
+
+  .modal_close {
+    top: 24px;
+    right: 24px;
+  }
+
+  .modal_title {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+
+  .modal_message {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .modal_buttons {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .modal_btn_confirm,
+  .modal_btn_cancel {
+    flex: 1;
+    padding: 16px;
+    font-size: 16px;
+  }
+}

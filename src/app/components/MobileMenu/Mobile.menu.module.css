@@ -152,6 +152,53 @@
   cursor: pointer;
 }
 
+.mobile_user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  padding: 10px 16px;
+  background-color: #fff4df;
+  text-decoration: none;
+}
+
+.mobile_user:hover {
+  background-color: #fbe7c1;
+}
+
+.mobile_user_avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6b83d;
+  flex-shrink: 0;
+}
+
+.mobile_avatar_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile_user_icon {
+  fill: #fff;
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.mobile_user_name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
 @media screen and (min-width: 768px) {
   .mobile_mop {
     padding: 39px 32px;

@@ -1,0 +1,37 @@
+.profile {
+  padding: 100px 0 20px 0;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.profile_title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #262626;
+  margin-bottom: 20px;
+}
+
+.profile_text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+@media screen and (min-width: 768px) {
+  .profile {
+    padding: 140px 0 32px 0;
+  }
+
+  .profile_title {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+
+  .profile_text {
+    font-size: 18px;
+  }
+}

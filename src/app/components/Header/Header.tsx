@@ -1,12 +1,16 @@
 import css from "./Header.module.css";
 import Logo from "../Logo/logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import AuthNav from "../AuthNav/AuthNav";
+import UserNav from "../UserNav/UserNav";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../../context/useAuth";
 
 function Header() {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
   const isHome = location.pathname === "/home";
   return (
@@ -45,20 +49,11 @@ function Header() {
             </ul>
           </nav>
           <div className={css.header_left}>
-            <button className={css.header_login} type="button">
-              <Link to="/login">Log In</Link>
-            </button>
-            <button className={css.header_registration} type="button">
-              <Link to="/register">Registration</Link>
-            </button>
-            <button className={css.header_logout} type="button">
-              Log out
-            </button>
-            <div className={css.header_user_menu}>
-              <svg className={css.header_icon_user} width={20} height={20}>
-                <use href="/sprite.svg#icon-user" />
-              </svg>
-            </div>
+            {isAuthenticated ? (
+              <UserNav isHome={isHome} />
+            ) : (
+              <AuthNav isHome={isHome} />
+            )}
             <button
               className={css.header_menu_btn_home}
               type="button"
