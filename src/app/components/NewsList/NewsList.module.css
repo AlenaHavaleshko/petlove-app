@@ -1,0 +1,40 @@
+.newsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  margin-bottom: 40px;
+}
+
+.emptyText {
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+  .newsList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  .emptyText {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .newsList {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}

@@ -1,21 +1,21 @@
 import css from "./Logo.module.css";
 import { Link } from "react-router-dom";
-import Loader from "../Loader/Loader";
-import { useState } from "react";
+import { useLoader } from "../../../context/useLoader";
 
 interface LogoProps {
   isHome: boolean;
 }
 
 function Logo({ isHome }: LogoProps) {
-  const [isLoading, setIsLoading] = useState(false);
+  const { showLoader } = useLoader();
+
   return (
     <div className={css.logo}>
       <Link
         to="/home"
         aria-label="Home"
         className={isHome ? css.logo_text_home : css.logo_text_other}
-        onClick={() => setIsLoading(true)}
+        onClick={showLoader}
       >
         petl
         <svg
@@ -27,7 +27,6 @@ function Logo({ isHome }: LogoProps) {
         </svg>
         ve
       </Link>
-      {isLoading && <Loader />}
     </div>
   );
 }

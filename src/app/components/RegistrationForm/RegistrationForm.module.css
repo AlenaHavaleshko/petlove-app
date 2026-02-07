@@ -34,11 +34,63 @@
   margin-bottom: 24px;
 }
 
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input_container {
+  position: relative;
+}
+
 .form_input {
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   padding: 12px;
   width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form_input:focus {
+  border-color: #f6b83d;
+}
+
+.input_error {
+  border-color: #ef2447 !important;
+}
+
+.input_success {
+  border-color: #08aa83 !important;
+}
+
+.validation_icon_error,
+.validation_icon_success {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.validation_icon_error {
+  stroke: #ef2447;
+  fill: none;
+}
+
+.validation_icon_success {
+  stroke: #08aa83;
+  fill: none;
+}
+
+.error_message {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #ef2447;
+  padding-left: 16px;
 }
 
 .input::placeholder {
