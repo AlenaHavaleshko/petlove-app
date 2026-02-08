@@ -1,27 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://petlove.b.goit.study/api';
-
-export interface NewsItem {
-  _id: string;
-  imgUrl: string;
-  title: string;
-  text: string;
-  date: string;
-  url: string;
-  id: string;
-}
-
-export interface NewsResponse {
-  results: NewsItem[];
-  totalPages: number;
-  page: number;
-  perPage: number;
-}
-
-export interface FetchNewsParams {
-  keyword?: string;
-  page?: number;
-  limit?: number;
-}
+import { API_BASE_URL } from '../apiBase';
+import type { FetchNewsParams, NewsResponse } from '../types/news';
 
 export async function fetchNews({
   keyword = '',

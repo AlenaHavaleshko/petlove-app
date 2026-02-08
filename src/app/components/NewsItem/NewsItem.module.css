@@ -4,6 +4,7 @@
   background-color: transparent;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  border-radius: 15px;
 }
 
 .newsItem:hover {

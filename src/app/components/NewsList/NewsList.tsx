@@ -1,4 +1,4 @@
-import { type NewsItem as NewsItemType } from "../../../services/api";
+import { type NewsItem as NewsItemType } from "../../../services/types/news";
 import NewsItem from "../NewsItem/NewsItem";
 import css from "./NewsList.module.css";
 

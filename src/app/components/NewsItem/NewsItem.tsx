@@ -1,4 +1,4 @@
-import { type NewsItem as NewsItemType } from "../../../services/api";
+import { type NewsItem as NewsItemType } from "../../../services/types/news";
 import css from "./NewsItem.module.css";
 
 interface NewsItemProps {

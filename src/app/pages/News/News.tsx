@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-import {
-  fetchNews,
-  type NewsItem,
-  type NewsResponse,
-} from "../../../services/api";
+import {fetchNews} from "../../../services/api";
+import  type {NewsItem, NewsResponse} from "../../../services/types";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import SearchField from "../../components/SearchField/SearchField";
 import NewsList from "../../components/NewsList/NewsList";

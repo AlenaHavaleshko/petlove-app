@@ -1,0 +1,103 @@
+.friendsItem {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.friendsItem:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.timeBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px 16px;
+  background-color: #fef3c7;
+  color: #f59e0b;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  border-radius: 30px;
+}
+
+.imageWrapper {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.friendPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  padding-top: 4px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #262626;
+  margin-bottom: 4px;
+}
+
+.info {
+  font-size: 14px;
+  line-height: 1.29;
+  color: #262626;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.label {
+  font-weight: 500;
+  color: rgba(38, 38, 38, 0.5);
+  min-width: 60px;
+}
+
+.link {
+  color: #262626;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  word-break: break-word;
+}
+
+.link:hover {
+  color: #f6b83d;
+}
+
+@media screen and (min-width: 768px) {
+  .friendsItem {
+    gap: 16px;
+  }
+
+  .imageWrapper {
+    width: 90px;
+    height: 90px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .info {
+    font-size: 14px;
+  }
+}

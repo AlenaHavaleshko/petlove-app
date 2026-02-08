@@ -1,0 +1,34 @@
+.friendsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.emptyText {
+  font-size: 16px;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+  .friendsList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .friendsList {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
