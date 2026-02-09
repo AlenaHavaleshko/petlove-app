@@ -22,7 +22,7 @@ function FriendsPage() {
   return (
     <div className={css.friendsPage}>
       <div className={css.container}>
-        <div className={css.friendspageWrapper}>
+        <div className={css.friendsWrapper}>
           <Title>Our friends</Title>
 
           {isLoading && <Loader />}

@@ -23,12 +23,15 @@ export default function FriendsItem({ friend }: FriendsItemProps) {
 
       <div className={css.contentWrapper}>
         <h3 className={css.title}>{friend.title}</h3>
-        <p className={css.info}>
-          <span className={css.label}>Email:</span>
-          <a href={`mailto:${friend.email}`} className={css.link}>
-            {friend.email}
-          </a>
-        </p>
+
+        {friend.email && (
+          <p className={css.info}>
+            <span className={css.label}>Email:</span>
+            <a href={`mailto:${friend.email}`} className={css.link}>
+              {friend.email}
+            </a>
+          </p>
+        )}
 
         <p className={css.info}>
           <span className={css.label}>Address:</span>
@@ -41,11 +44,16 @@ export default function FriendsItem({ friend }: FriendsItemProps) {
             {friend.address || "website only"}
           </a>
         </p>
+
         <p className={css.info}>
           <span className={css.label}>Phone:</span>
-          <a href={`tel:${friend.phone}`} className={css.link}>
-            {friend.phone || "email only"}
-          </a>
+          {friend.phone ? (
+            <a href={`tel:${friend.phone}`} className={css.link}>
+              {friend.phone}
+            </a>
+          ) : (
+            <span className={css.link}>email only</span>
+          )}
         </p>
       </div>
     </li>
