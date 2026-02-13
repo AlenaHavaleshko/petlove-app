@@ -66,10 +66,12 @@ function LoginForm() {
 
       toast.success("Login successful! Welcome back!");
       navigate("/profile");
-    } catch (error: any) {
-      toast.error(
-        error?.message || "Login failed. Please check your credentials.",
-      );
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Login failed. Please check your credentials.";
+      toast.error(errorMessage);
     } finally {
       hideLoader();
     }

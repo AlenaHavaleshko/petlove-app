@@ -16,6 +16,7 @@ export interface Notice {
       createdAt: string;
       updatedAt?: string;
       isFavorite?: boolean;
+      phone?: string;
     }
 
     export interface NoticesResponse {

@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { type Notice } from "../../../services/types/notices";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../../services/api/notices";
+import { toast } from "react-toastify";
 import css from "./ModalNotice.module.css";
 
 interface ModalNoticeProps {
@@ -13,8 +18,14 @@ export default function ModalNotice({
   onClose,
   notice,
 }: ModalNoticeProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(notice?.isFavorite || false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (notice) {
+      setIsFavorite(notice.isFavorite || false);
+    }
+  }, [notice]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -46,29 +57,44 @@ export default function ModalNotice({
   };
 
   const handleToggleFavorite = async () => {
+    if (!notice) return;
+
     setIsLoading(true);
+    const previousState = isFavorite;
+
+    // Optimistic update
+    setIsFavorite(!isFavorite);
+
     try {
-      // Send request to backend to add/remove from favorites
-      const endpoint = isFavorite
-        ? `/notices/favorites/${notice._id}`
-        : `/notices/favorites/${notice._id}`;
-      const method = isFavorite ? "DELETE" : "POST";
-
-      const response = await fetch(endpoint, { method });
-
-      if (response.ok) {
-        setIsFavorite(!isFavorite);
+      if (previousState) {
+        await removeFromFavorites(notice._id);
+        toast.success("Removed from favorites");
+      } else {
+        await addToFavorites(notice._id);
+        toast.success("Added to favorites");
       }
     } catch (error) {
-      console.error("Error toggling favorite:", error);
+      // Rollback on error
+      setIsFavorite(previousState);
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to update favorites";
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleContact = () => {
-    // Using mailto protocol for contact
-    window.location.href = `mailto:contact@petlove.com?subject=Inquiry about ${notice.name}`;
+    if (!notice) return;
+
+    // Using tel: protocol for contact (phone number)
+    const phone = notice.phone || "";
+
+    if (phone) {
+      window.location.href = `tel:${phone}`;
+    } else {
+      toast.error("Contact information not available");
+    }
   };
 
   return (

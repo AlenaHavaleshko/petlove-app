@@ -75,6 +75,12 @@ export async function addToFavorites(id: string): Promise<void> {
   if (!response.ok) {
     const errorText = await response.text();
     console.error('addToFavorites failed', errorText);
+    
+    // 409 Conflict means already in favorites - treat as success
+    if (response.status === 409) {
+      return;
+    }
+    
     throw new Error('Failed to add to favorites');
   }
 }
@@ -95,6 +101,12 @@ export async function removeFromFavorites(id: string): Promise<void> {
   if (!response.ok) {
     const errorText = await response.text();
     console.error('removeFromFavorites failed', errorText);
+    
+    // 404 Not Found means not in favorites - treat as success
+    if (response.status === 404) {
+      return;
+    }
+    
     throw new Error('Failed to remove from favorites');
   }
 }

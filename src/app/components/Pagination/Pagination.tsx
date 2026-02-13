@@ -18,7 +18,7 @@ function Pagination({
 
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
-    const maxVisiblePages = 5;
+    const maxVisiblePages = 3;
 
     if (totalPages <= maxVisiblePages + 2) {
       // Show all pages if total is small
@@ -31,15 +31,18 @@ function Pagination({
 
       if (currentPage <= 3) {
         // Show pages 2, 3, 4 and ellipsis
-        for (let i = 2; i <= 4; i++) {
+        for (let i = 2; i <= 3; i++) {
           pages.push(i);
         }
         pages.push("...");
+        pages.push(totalPages);
       } else if (currentPage >= totalPages - 2) {
-        // Show ellipsis and last 3 pages
+        // Show ellipsis and last 4 pages (including totalPages)
         pages.push("...");
-        for (let i = totalPages - 3; i < totalPages; i++) {
-          pages.push(i);
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          if (i > 1) { // Don't duplicate first page
+            pages.push(i);
+          }
         }
       } else {
         // Show ellipsis, current page with neighbors, and ellipsis
@@ -48,10 +51,8 @@ function Pagination({
         pages.push(currentPage);
         pages.push(currentPage + 1);
         pages.push("...");
+        pages.push(totalPages);
       }
-
-      // Always show last page
-      pages.push(totalPages);
     }
 
     return pages;

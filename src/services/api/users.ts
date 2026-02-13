@@ -49,8 +49,21 @@ export async function loginUser(credentials: LoginCredentials): Promise<AuthResp
   }
 
   const data = await response.json();
-  console.log('loginUser success', { hasToken: !!data.token, user: data.user });
-  return data;
+  console.log('loginUser success', { hasToken: !!data.token, user: data.user || { name: data.name, email: data.email } });
+  
+  // Нормалізуємо відповідь: backend може повернути { token, user: {...} } або { token, name, email }
+  if (data.user) {
+    return data;
+  } else {
+    return {
+      token: data.token,
+      user: {
+        name: data.name,
+        email: data.email,
+        avatar: data.avatar,
+      },
+    };
+  }
 }
 
 export async function registerUser(credentials: RegisterCredentials): Promise<AuthResponse> {
@@ -83,6 +96,19 @@ export async function registerUser(credentials: RegisterCredentials): Promise<Au
   }
 
   const data = await response.json();
-  console.log('registerUser success', { hasToken: !!data.token, user: data.user });
-  return data;
+  console.log('registerUser success', { hasToken: !!data.token, user: data.user || { name: data.name, email: data.email } });
+  
+  // Нормалізуємо відповідь: backend може повернути { token, user: {...} } або { token, name, email }
+  if (data.user) {
+    return data;
+  } else {
+    return {
+      token: data.token,
+      user: {
+        name: data.name,
+        email: data.email,
+        avatar: data.avatar,
+      },
+    };
+  }
 }
