@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/useAuth";
 import { useLoader } from "../../../context/useLoader";
+import { loginUser } from "../../../services/api/users";
 import { toast } from "react-toastify";
 import sprite from "/sprite.svg";
 
@@ -53,18 +54,14 @@ function LoginForm() {
     try {
       showLoader();
 
-      // Симуляція API запиту - замініть на реальний запит
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Реальний API запит
+      const response = await loginUser({
+        email: data.email,
+        password: data.password,
+      });
 
-      // Симуляція успішного логіну
-      const response = {
-        token: "mock-token",
-        user: {
-          name: data.email.split("@")[0],
-          email: data.email,
-        },
-      };
-
+      // Зберігаємо токен
+      localStorage.setItem("petlove_token", response.token);
       login(response.user);
 
       toast.success("Login successful! Welcome back!");

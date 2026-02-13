@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchFriends } from "../../../services/api";
 import type { Friend } from "../../../services/types/friends";
 import FriendsList from "../../components/FriendsList/FriendsList";
-import Title from "../../components/PageTitle/PageTitle";
+import PageTitle from "../../components/PageTitle/PageTitle";
 import Loader from "../../components/Loader/Loader";
 //import { useLoader } from "../../../context/useLoader";
 import css from "./Friends.module.css";
@@ -23,7 +23,7 @@ function FriendsPage() {
     <div className={css.friendsPage}>
       <div className={css.container}>
         <div className={css.friendsWrapper}>
-          <Title>Our friends</Title>
+          <PageTitle>Our friends</PageTitle>
 
           {isLoading && <Loader />}
 

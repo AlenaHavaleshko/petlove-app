@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/useAuth";
 import { useLoader } from "../../../context/useLoader";
+import { registerUser } from "../../../services/api/users";
 import { toast } from "react-toastify";
 import sprite from "/sprite.svg";
 
@@ -67,18 +68,15 @@ export function RegistrationForm() {
     try {
       showLoader();
 
-      // Симуляція API запиту - замініть на реальний запит
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Реальний API запит
+      const response = await registerUser({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
 
-      // Симуляція успішної реєстрації
-      const response = {
-        token: "mock-token",
-        user: {
-          name: data.name,
-          email: data.email,
-        },
-      };
-
+      // Зберігаємо токен
+      localStorage.setItem("petlove_token", response.token);
       // Автоматична авторізація
       login(response.user);
 

@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsAuthenticated(false);
     setUser(null);
     localStorage.removeItem(USER_STORAGE_KEY);
+    localStorage.removeItem("petlove_token");
   };
 
   return (

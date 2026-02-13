@@ -135,7 +135,7 @@ function Pagination({
 
           return (
             <button
-              key={page}
+              key={`page-${page}`}
               className={`${css.paginationButton} ${css.pageButton} ${
                 page === currentPage ? css.active : ""
               }`}
