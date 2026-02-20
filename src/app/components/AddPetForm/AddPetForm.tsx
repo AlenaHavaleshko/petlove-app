@@ -212,7 +212,7 @@ export default function AddPetForm() {
             options={speciesOptions}
             placeholder="Type of pet"
             styles={{
-              control: base => ({
+              control: (base) => ({
                 ...base,
                 minHeight: 52,
                 maxHeight: 52,
@@ -252,6 +252,7 @@ export default function AddPetForm() {
                 ...base,
                 color: "rgba(38,38,38,0.5)",
                 fontSize: 18,
+                height: 30,
               }),
               singleValue: (base) => ({
                 ...base,
