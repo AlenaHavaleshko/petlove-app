@@ -1,5 +1,15 @@
+// Получить избранные объявления пользователя
+export async function fetchFavorites(): Promise<import("../types/notices").Notice[]> {
+  const token = localStorage.getItem('petlove_token');
+  if (!token) throw new Error('No authentication token found. Please login first.');
+  const response = await fetch(`${API_BASE_URL}/notices/favorites`, {
+    headers: { 'Authorization': `Bearer ${token}` },
+  });
+  if (!response.ok) throw new Error('Failed to fetch favorites');
+  return response.json();
+}
 import { API_BASE_URL } from "../apiBase";
-import type { NoticesResponse, FetchNoticesParams } from "../types/notices";
+import type { NoticesResponse, FetchNoticesParams, Location } from "../types/notices";
 
 export async function fetchNotices({
   page = 1,
@@ -37,7 +47,14 @@ export async function fetchNotices({
   }
   
   if (sortBy) {
-    params.append('byPopularity', sortBy === 'popular' ? 'true' : 'false');
+    if (sortBy === 'popular') {
+      params.append('byPopularity', 'false');
+    } else if (sortBy === 'unpopular') {
+      params.append('byPopularity', 'true');
+    } else if (sortBy === 'price') {
+      // byPrice only boolean supported by API
+      params.append('byPrice', 'true');
+    }
   }
 
   const response = await fetch(`${API_BASE_URL}/notices?${params.toString()}`);
@@ -78,6 +95,14 @@ export async function addToFavorites(id: string): Promise<void> {
     
     // 409 Conflict means already in favorites - treat as success
     if (response.status === 409) {
+      // Можно добавить notification
+      if (typeof window !== 'undefined') {
+        // Используем react-toastify если подключен
+        try {
+          const { toast } = await import('react-toastify');
+          toast.info('This notice is already in favorites');
+        } catch {}
+      }
       return;
     }
     
@@ -109,5 +134,46 @@ export async function removeFromFavorites(id: string): Promise<void> {
     
     throw new Error('Failed to remove from favorites');
   }
+}
+
+export async function fetchCategories(): Promise<string[]> {
+  const response = await fetch(`${API_BASE_URL}/notices/categories`);
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch categories');
+  }
+
+  return response.json();
+}
+
+export async function fetchSexOptions(): Promise<string[]> {
+  const response = await fetch(`${API_BASE_URL}/notices/sex`);
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch sex options');
+  }
+
+  return response.json();
+}
+
+export async function fetchSpecies(): Promise<string[]> {
+  const response = await fetch(`${API_BASE_URL}/notices/species`);
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch species');
+  }
+
+  return response.json();
+}
+
+export async function fetchLocations(keyword?: string): Promise<Location[]> {
+  const params = keyword ? `?keyword=${encodeURIComponent(keyword)}` : '';
+  const response = await fetch(`${API_BASE_URL}/cities${params}`);
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch locations');
+  }
+
+  return response.json();
 }
  

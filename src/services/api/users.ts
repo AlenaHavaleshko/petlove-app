@@ -1,3 +1,73 @@
+// Обновить профиль пользователя (включая аватар)
+export async function updateUserProfile(data: { name?: string; email?: string; phone?: string; avatar?: string }) {
+  const token = localStorage.getItem("petlove_token");
+  const response = await fetch(`${API_BASE_URL}/users/current/edit`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update user profile");
+  }
+  return response.json();
+}
+// Получить список питомцев пользователя
+export async function getUserPets() {
+  const token = localStorage.getItem("petlove_token");
+  const response = await fetch(`${API_BASE_URL}/users/current/full`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch pets");
+  }
+  return response.json();
+}
+
+// Удалить питомца пользователя
+export async function deleteUserPet(petId: string) {
+  const token = localStorage.getItem("petlove_token");
+  const response = await fetch(`${API_BASE_URL}/users/current/pets/remove/${petId}` , {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to delete pet");
+  }
+  return true;
+}
+
+// Добавить питомца пользователя
+export async function addUserPet(pet: {
+  name: string;
+  title: string;
+  imgURL: string;
+  species: string;
+  birthday: string;
+  sex: string;
+}) {
+  const token = localStorage.getItem("petlove_token");
+  const response = await fetch(`${API_BASE_URL}/users/current/pets/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(pet),
+  });
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "Failed to add pet");
+  }
+  return response.json();
+}
+
 import { API_BASE_URL } from "../apiBase";
 
 export interface LoginCredentials {

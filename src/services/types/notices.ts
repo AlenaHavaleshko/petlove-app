@@ -20,9 +20,9 @@ export interface Notice {
     }
 
     export interface NoticesResponse {
-     pages: number;
+     page: number;
      perPage: number;
-     total: number;
+     totalPages: number;
      results: Notice[];
     }
 
@@ -34,5 +34,21 @@ export interface Notice {
       sex?: string;
       species?: string;
       location?: string;
-      sortBy?: "popular" | "price";
+      sortBy?: "popular" | "unpopular" | "price";
+      // priceOrder больше не используется, сортировка по цене только по возрастанию (byPrice: true)
+      // priceOrder?: "asc" | "desc";
+    }
+
+    export interface Location {
+      _id: string;
+      cityEn: string;
+      stateEn: string;
+      countyEn?: string;
+      useCounty?: boolean;
+    }
+
+    export interface NoticesFiltersProps {
+      filters: FetchNoticesParams;
+      onChange: (filters: Partial<FetchNoticesParams>) => void;
+      onReset?: () => void;
     }

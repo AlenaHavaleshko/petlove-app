@@ -1,37 +1,158 @@
+/* Profile page main wrapper */
+.profile {
+  padding: 40px 0 20px 0;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Container for content */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+}
+
+/* UserCard block */
+.userCard {
+  flex: 0 0 420px;
+  min-width: 320px;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+  padding: 40px 24px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .userCard {
+    padding: 48px 32px 40px 32px;
+    min-width: 360px;
+    max-width: 480px;
+  }
+}
+
+/* MyNotices block */
+.myNotices {
+  flex: 1 1 0%;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  min-width: 0;
+}
+
+/* Notices grid for favorites/viewed */
+.myNotices ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .myNotices ul {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .myNotices ul {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* Tabs styles */
+.tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.tab {
+  padding: 12px 32px;
+  border-radius: 20px;
+  background: #fff4df;
+  cursor: pointer;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+.tabActive {
+  background: 0;
+  color: #222;
+}
+/* Profile page main wrapper */
 .profile {
   padding: 100px 0 20px 0;
   background-color: #f9f9f9;
   min-height: 100vh;
 }
 
-.profile_title {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 100%;
-  letter-spacing: -0.04em;
-  color: #262626;
-  margin-bottom: 20px;
+/* Container for content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.profile_text {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 129%;
-  letter-spacing: -0.02em;
-  color: #262626;
+/* UserCard and MyNotices layout */
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
 }
 
-@media screen and (min-width: 768px) {
-  .profile {
-    padding: 140px 0 32px 0;
-  }
+/* UserCard block */
+.userCard {
+  flex: 0 0 340px;
+  min-width: 280px;
+  max-width: 340px;
+  border-radius: 16px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-  .profile_title {
-    font-size: 36px;
-    margin-bottom: 24px;
-  }
+/* MyNotices block */
+.myNotices {
+  flex: 1 1 0%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  margin-top: 50px;
+  min-width: 0;
+}
 
-  .profile_text {
-    font-size: 18px;
+/* Responsive tweaks */
+@media (max-width: 1023px) {
+  .userCard, .myNotices {
+    padding: 24px 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .container {
+    gap: 24px;
   }
 }

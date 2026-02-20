@@ -15,10 +15,13 @@
   display: none;
 }
 
+/* Make columns equal height and align center */
 .login_box {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: stretch;
+  min-height: 600px;
 }
 
 @media screen and (min-width: 768px) {
@@ -29,6 +32,7 @@
   .login_image {
     border-radius: 60px;
     max-width: 704px;
+    max-height: 592px;
     display: flex;
     position: relative;
   }
@@ -37,7 +41,7 @@
     display: flex;
     position: absolute;
     left: 32px;
-    bottom: 32px;
+    bottom: 5px;
   }
 
   .login_box {
@@ -49,16 +53,28 @@
   .login_box {
     flex-direction: row;
     gap: 32px;
+    align-items: stretch;
+    justify-content: center;
+    min-height: 700px;
   }
 
   .login_image,
   .login_form {
     width: 592px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    min-height: 700px;
+    background: #fff;
+    border-radius: 60px;
   }
 
   .login_title {
+    display: flex;
+    position: absolute;
     left: 61px;
     bottom: 97px;
+    z-index: 2;
+    box-shadow: 0 4px 24px 0 #00000014;
   }
 }

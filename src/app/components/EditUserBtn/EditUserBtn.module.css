@@ -1,0 +1,24 @@
+ .editUserBtn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: #FFF4DF;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 0;
+  overflow: hidden;
+ }
+.editUserBtn svg {
+	display: block;
+	width: 20px;
+	height: 20px;
+	stroke: #F6B83D;
+ fill:none;
+}

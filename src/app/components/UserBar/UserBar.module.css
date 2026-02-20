@@ -7,21 +7,25 @@
   border-radius: 30px;
   cursor: pointer;
   text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .user_bar:hover {
-  background: #fbe7c1;
+  background: #F9B020;
 }
 
 .user_avatar {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: transparent;
   flex-shrink: 0;
 }
 
@@ -32,15 +36,15 @@
 }
 
 .avatar_icon {
-  fill: #f6b83d;
-  width: 18px;
-  height: 18px;
+  fill: #fff;
+  width: 20px;
+  height: 20px;
 }
 
 .user_name {
-  display: block;
+  font-size: 18px;
   font-weight: 500;
-  font-size: 14px;
+  color: #fff;
   line-height: 129%;
   letter-spacing: -0.03em;
   color: #fff;

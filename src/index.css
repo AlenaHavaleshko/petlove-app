@@ -65,24 +65,23 @@ img {
   margin: 0 auto;
 }
 
-/* Styles for Mobile devices */
 @media screen and (min-width: 375px) {
   .container {
     padding: 0 20px;
+    max-width: 375px;
   }
 }
 
-/* Styles for Tablet devices */
 @media screen and (min-width: 768px) {
   .container {
     padding: 0 32px;
+    max-width: 768px;
   }
 }
 
-/* Styles for Desktop devices */
 @media screen and (min-width: 1280px) {
   .container {
-    padding: 0 32px;
+    padding: 0 64px;
     max-width: 1280px;
   }
 }

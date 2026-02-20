@@ -1,0 +1,194 @@
+﻿.noticesFilters {
+  width: 100%;
+  padding: 2rem;
+  background-color: #fff4df;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.topRow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.topRow::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(38, 38, 38, 0.1);
+}
+
+.selectWrapper {
+  position: relative;
+  flex: 1;
+  min-width: 150px;
+}
+
+.bottomRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.searchWrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.locationWrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.reactSelect {
+  width: 100%;
+}
+
+.dropdownIcon {
+  transition: transform 0.2s ease;
+  color: #262626;
+}
+
+.clearIcon {
+  color: #262626;
+  cursor: pointer;
+}
+
+.sortButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: white;
+  color: #262626;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.closeIcon {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.sortButton:hover {
+  background-color: #f0f0f0;
+}
+
+.sortButton.active {
+  background-color: #f6b83d;
+  color: white;
+}
+
+/* React-select custom styles */
+:global(.select__control) {
+  border: none !important;
+  border-radius: 30px !important;
+  min-height: 44px !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  background-color: white !important;
+}
+
+:global(.select__control:hover) {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+:global(.select__control--is-focused) {
+  box-shadow: 0 0 0 2px rgba(246, 184, 61, 0.3) !important;
+}
+
+:global(.select__placeholder) {
+  color: #262626 !important;
+  font-size: 0.875rem !important;
+}
+
+:global(.select__single-value) {
+  color: #262626 !important;
+  font-size: 0.875rem !important;
+}
+
+:global(.select__input-container) {
+  color: #262626 !important;
+  font-size: 0.875rem !important;
+}
+
+:global(.select__menu) {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  margin-top: 4px !important;
+  overflow: hidden !important;
+}
+
+:global(.select__menu-list) {
+  padding: 0 !important;
+}
+
+:global(.select__option) {
+  cursor: pointer !important;
+  font-size: 0.875rem !important;
+  padding: 0.75rem 1rem !important;
+}
+
+:global(.select__option:first-of-type) {
+  color: #f6b83d !important;
+  font-weight: 500 !important;
+}
+
+:global(.select__option--is-focused) {
+  background-color: #fff5e1 !important;
+}
+
+:global(.select__option--is-selected) {
+  background-color: #f6b83d !important;
+  color: white !important;
+}
+
+:global(.select__indicator-separator) {
+  display: none !important;
+}
+
+:global(.select__dropdown-indicator) {
+  color: #262626 !important;
+}
+
+:global(.select__clear-indicator) {
+  padding: 0px !important;
+  color: #262626 !important;
+  cursor: pointer !important;
+}
+
+:global(.select__clear-indicator:hover) {
+  color: #262626 !important;
+}
+
+@media (max-width: 768px) {
+  .noticesFilters {
+    padding: 1.5rem;
+  }
+
+  .topRow {
+    flex-direction: column;
+  }
+
+  .searchWrapper,
+  .selectWrapper,
+  .locationWrapper {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .bottomRow {
+    justify-content: flex-start;
+  }
+}

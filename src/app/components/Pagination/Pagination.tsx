@@ -11,51 +11,68 @@ function Pagination({
   totalPages,
   onPageChange,
 }: PaginationProps) {
-  // Hide pagination if only one page
-  if (totalPages <= 1) {
+  // Hide pagination if only one page or invalid data
+  if (!totalPages || totalPages <= 1) {
     return null;
   }
+
+  // Validate and constrain values
+  const validCurrentPage = Math.max(1, Math.min(currentPage || 1, totalPages));
+  const validTotalPages = totalPages;
 
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
     const maxVisiblePages = 3;
 
-    if (totalPages <= maxVisiblePages + 2) {
+    if (validTotalPages <= maxVisiblePages + 2) {
       // Show all pages if total is small
-      for (let i = 1; i <= totalPages; i++) {
+      for (let i = 1; i <= validTotalPages; i++) {
         pages.push(i);
       }
     } else {
       // Always show first page
       pages.push(1);
 
-      if (currentPage <= 3) {
+      if (validCurrentPage <= 3) {
         // Show pages 2, 3, 4 and ellipsis
-        for (let i = 2; i <= 3; i++) {
+        for (let i = 2; i <= Math.min(4, validTotalPages - 1); i++) {
           pages.push(i);
         }
+        if (validTotalPages > 4) {
+          pages.push("...");
+        }
+        if (validTotalPages > 1) {
+          pages.push(validTotalPages);
+        }
+      } else if (validCurrentPage >= validTotalPages - 2) {
+        // Show ellipsis and last 4 pages
         pages.push("...");
-        pages.push(totalPages);
-      } else if (currentPage >= totalPages - 2) {
-        // Show ellipsis and last 4 pages (including totalPages)
-        pages.push("...");
-        for (let i = totalPages - 3; i <= totalPages; i++) {
-          if (i > 1) { // Don't duplicate first page
-            pages.push(i);
-          }
+        for (
+          let i = Math.max(2, validTotalPages - 3);
+          i <= validTotalPages;
+          i++
+        ) {
+          pages.push(i);
         }
       } else {
         // Show ellipsis, current page with neighbors, and ellipsis
         pages.push("...");
-        pages.push(currentPage - 1);
-        pages.push(currentPage);
-        pages.push(currentPage + 1);
+        pages.push(validCurrentPage - 1);
+        pages.push(validCurrentPage);
+        pages.push(validCurrentPage + 1);
         pages.push("...");
-        pages.push(totalPages);
+        pages.push(validTotalPages);
       }
     }
 
-    return pages;
+    // Filter out any invalid values and ensure no duplicates
+    return pages.filter((page, index, self) => {
+      if (typeof page === "string") return true; // Keep ellipsis
+      if (typeof page !== "number") return false; // Remove non-numbers
+      if (page < 1 || page > validTotalPages) return false; // Remove out of range
+      // Remove duplicates
+      return self.indexOf(page) === index;
+    });
   };
 
   const handleFirstPage = () => {
@@ -63,19 +80,19 @@ function Pagination({
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
-      onPageChange(currentPage - 1);
+    if (validCurrentPage > 1) {
+      onPageChange(validCurrentPage - 1);
     }
   };
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
+    if (validCurrentPage < validTotalPages) {
+      onPageChange(validCurrentPage + 1);
     }
   };
 
   const handleLastPage = () => {
-    onPageChange(totalPages);
+    onPageChange(validTotalPages);
   };
 
   const handlePageClick = (page: number) => {
@@ -83,8 +100,8 @@ function Pagination({
   };
 
   const pageNumbers = getPageNumbers();
-  const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === totalPages;
+  const isFirstPage = validCurrentPage === 1;
+  const isLastPage = validCurrentPage === validTotalPages;
 
   return (
     <div className={css.pagination}>
@@ -134,15 +151,19 @@ function Pagination({
             );
           }
 
+          if (typeof page !== "number") {
+            return null; // Skip invalid entries
+          }
+
           return (
             <button
               key={`page-${page}`}
               className={`${css.paginationButton} ${css.pageButton} ${
-                page === currentPage ? css.active : ""
+                page === validCurrentPage ? css.active : ""
               }`}
-              onClick={() => handlePageClick(page as number)}
+              onClick={() => handlePageClick(page)}
               aria-label={`Go to page ${page}`}
-              aria-current={page === currentPage ? "page" : undefined}
+              aria-current={page === validCurrentPage ? "page" : undefined}
             >
               {page}
             </button>

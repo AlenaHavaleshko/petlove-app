@@ -6,12 +6,12 @@ import type {
   NoticesResponse,
 } from "../../../services/types/notices";
 import PageTitle from "../../components/PageTitle/PageTitle";
-// import NoticesFilters from "../../components/NoticesFilters/NoticesFilters";
+import NoticesFilters from "../../components/NoticesFilters/NoticesFilters";
 import NoticesList from "../../components/NoticesList/NoticesList";
 import Pagination from "../../components/Pagination/Pagination";
 import Loader from "../../components/Loader/Loader";
 import css from "./Notices.module.css";
-
+  
 function Notices() {
   const [filters, setFilters] = useState<FetchNoticesParams>({
     page: 1,
@@ -28,7 +28,7 @@ function Notices() {
         setError(null);
         const data: NoticesResponse = await fetchNotices(filters);
         setNotices(data.results);
-        setTotalPages(data.pages);
+        setTotalPages(data.totalPages);
       } catch (err) {
         setError("Failed to load notices. Please try again later.");
         console.error("Error fetching notices:", err);
@@ -50,11 +50,13 @@ function Notices() {
       <div className={css.container}>
         <PageTitle>Find your favorite pet</PageTitle>
 
-        {/* <NoticesFilters 
+        <NoticesFilters
           filters={filters}
-          onChange={(newFilters) => setFilters((prev) => ({ ...prev, ...newFilters, page: 1 }))}
+          onChange={(newFilters) =>
+            setFilters((prev) => ({ ...prev, ...newFilters, page: 1 }))
+          }
           onReset={() => setFilters({ page: 1, limit: 6 })}
-        /> */}
+        />
 
         {isLoading && <Loader />}
 

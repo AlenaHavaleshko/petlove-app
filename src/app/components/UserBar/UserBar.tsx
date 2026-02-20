@@ -8,15 +8,11 @@ function UserBar() {
   return (
     <Link to="/profile" className={css.user_bar}>
       <div className={css.user_avatar}>
-        {user?.avatar ? (
-          <img src={user.avatar} alt={user.name} className={css.avatar_img} />
-        ) : (
-          <svg className={css.avatar_icon} width={20} height={20}>
-            <use href="/sprite.svg#icon-user" />
-          </svg>
-        )}
+        <svg className={css.avatar_icon} width={20} height={20}>
+          <use href="/sprite.svg#icon-user" />
+        </svg>
       </div>
-      {user && <span className={css.user_name}>{user.name}</span>}
+      <span className={css.user_name}>{user?.name || "User"}</span>
     </Link>
   );
 }

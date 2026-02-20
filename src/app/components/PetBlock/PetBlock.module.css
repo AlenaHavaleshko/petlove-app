@@ -1,8 +1,32 @@
+.paw_placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff4df;
+}
+.paw_icon {
+  color: #f4b740;
+  fill: #f4b740;
+  opacity: 0.7;
+}
+.pet_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Animal image block fills parent */
 .pet_block {
   border-radius: 30px;
-  max-width: 335px;
-  margin: 0 auto;
+  margin: 0;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-grow: 1;
 }
 
 .pet_block img {
@@ -10,16 +34,28 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  min-height: 0;
+  min-width: 0;
 }
 
 @media screen and (min-width: 768px) {
   .pet_block {
     border-radius: 60px;
-    max-width: 704px;
     display: flex;
     position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
   }
 }
 
 @media screen and (min-width: 1280px) {
+  .pet_block {
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+  }
 }

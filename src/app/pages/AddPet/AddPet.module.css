@@ -4,8 +4,100 @@
   margin: 0 auto;
 }
 
-.pet_form {
+.add_pet_box {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: stretch;
+  min-height: 600px;
+}
+
+.add_pet_image {
+  border-radius: 30px;
+  max-width: 335px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #fff;
+}
+
+.add_pet_form {
+  border-radius: 30px;
+  background: #fff;
+  margin: 0 auto;
+  max-width: 335px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 28px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .add_pet_form {
+    border-radius: 60px;
+    max-width: 704px;
+    min-height: 592px;
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    padding: 60px 80px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .add_pet_form {
+    width: 592px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    min-height: 700px;
+    background: #fff;
+    border-radius: 40px;
+    padding: 60px 80px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .add_pet {
+    padding: 114px 0 32px 0;
+  }
+  .add_pet_box {
+    gap: 16px;
+  }
+  .add_pet_image {
+    border-radius: 60px;
+    max-width: 704px;
+    display: flex;
+    position: relative;
+    min-height: 592px;
+    width: 100%;
+  }
+  .add_pet_form {
+    border-radius: 60px;
+    max-width: 704px;
+    min-height: 592px;
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .add_pet_box {
+    flex-direction: row;
+    gap: 32px;
+    align-items: stretch;
+    min-height: 700px;
+  }
+  .add_pet_image,
+  .add_pet_form {
+    width: 592px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    min-height: 700px;
+    background: #fff;
+    border-radius: 40px;
+  }
 }

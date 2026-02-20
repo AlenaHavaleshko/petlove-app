@@ -4,6 +4,7 @@ interface PetBlockProps {
   desktopSet: string;
   laptopSet: string;
   mobileSrc: string;
+  imageUrl?: string | null;
 }
 
 function PetBlock({ desktopSet, laptopSet, mobileSrc }: PetBlockProps) {
@@ -12,7 +13,7 @@ function PetBlock({ desktopSet, laptopSet, mobileSrc }: PetBlockProps) {
       <picture>
         <source srcSet={desktopSet} media="(min-width: 1280px)" />
         <source srcSet={laptopSet} media="(min-width: 768px)" />
-        <img src={mobileSrc} alt="Cat" />
+        <img src={mobileSrc} alt="Dog mobile" />
       </picture>
     </div>
   );

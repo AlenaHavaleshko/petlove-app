@@ -1,0 +1,36 @@
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.addPet {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  text-align: left;
+}
+
+.button {
+  background: #F6B83D;
+  color: #FFFFFF;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  background: #F9B020;
+}

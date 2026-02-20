@@ -1,0 +1,53 @@
+.petsItem {
+	display: flex;
+	align-items: center;
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+	padding: 20px 32px 20px 20px;
+	position: relative;
+	min-height: 120px;
+}
+.petImage {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 24px;
+}
+.petInfo {
+	flex: 1;
+}
+.petTitle {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+.petTable {
+	display: flex;
+	gap: 24px;
+	font-size: 14px;
+	color: #222;
+}
+.petTableCol {
+	display: flex;
+	flex-direction: column;
+}
+.deleteBtn {
+	background: #FFF4DF;
+	border: none;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.deleteBtn:hover {
+	background: #F9B020;
+}
