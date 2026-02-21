@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { addUserPet } from "../../../services/api/users";
+import { uploadImageToCloudinary } from "../../../services/api/cloudinary";
 import { toast } from "react-toastify";
 import css from "./AddPetForm.module.css";
 
@@ -14,7 +15,7 @@ const schema = Yup.object().shape({
   imgURL: Yup.string()
     .required("Image URL is required")
     .matches(
-      /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/i,
+      /^https?:\/\/.+/i,
       "Enter a valid image URL",
     ),
   title: Yup.string().required("Title is required"),
@@ -22,7 +23,8 @@ const schema = Yup.object().shape({
   birthday: Yup.string()
     .required("Birthday is required")
     .matches(/^\d{2}\.\d{2}\.\d{4}$/, "Enter date in format DD.MM.YYYY"),
-  species: Yup.string().required("Type of pet is required"),
+  species: Yup.string()
+    .required("Type of pet is required"),
   sex: Yup.string().required("Sex is required"),
 });
 
@@ -36,10 +38,15 @@ interface AddPetFormData {
 }
 
 const speciesOptions = [
-  { value: "Dog", label: "Dog" },
-  { value: "Cat", label: "Cat" },
-  { value: "Monkey", label: "Monkey" },
-  { value: "Bird", label: "Bird" },
+  { value: "dog", label: "Dog" },
+  { value: "cat", label: "Cat" },
+  { value: "monkey", label: "Monkey" },
+  { value: "bird", label: "Bird" },
+  { value: "snake", label: "Snake" },
+  { value: "turtle", label: "Turtle" },
+  { value: "lizard", label: "Lizard" },
+  { value: "frog", label: "Frog" },
+  { value: "fish", label: "Fish" },
 ];
 
 export default function AddPetForm() {
@@ -48,6 +55,7 @@ export default function AddPetForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<AddPetFormData>({
     resolver: yupResolver(schema),
@@ -56,7 +64,7 @@ export default function AddPetForm() {
       title: "",
       name: "",
       birthday: "",
-      species: "Type of pet",
+      species: "",
       sex: "male",
     },
   });
@@ -77,6 +85,9 @@ export default function AddPetForm() {
       toast.error(errorMsg);
     }
   };
+
+  const [localImg, setLocalImg] = useState<string>("");
+  const [uploading, setUploading] = useState(false);
 
   return (
     <form
@@ -130,25 +141,29 @@ export default function AddPetForm() {
       </div>
       <div className={css.form_photo}>
         {/* Показываем фото, если введён валидный URL, иначе — SVG лапки */}
-        {(() => {
-          const url =
-            (typeof window !== "undefined" &&
-              (
-                document?.querySelector(
-                  'input[name="imgURL"]',
-                ) as HTMLInputElement | null
-              )?.value) ||
-            "";
-          const isValid =
-            /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/i.test(url);
-          return isValid ? (
-            <img src={url} alt="Pet" className={css.form_img} />
-          ) : (
-            <svg width={96} height={96} className={css.paw_icon}>
-              <use href="sprite.svg#icon-paw" />
-            </svg>
-          );
-        })()}
+        {localImg ? (
+          <img src={localImg} alt="Pet" className={css.form_img} />
+        ) : (
+          (() => {
+            const url =
+              (typeof window !== "undefined" &&
+                (
+                  document?.querySelector(
+                    'input[name="imgURL"]',
+                  ) as HTMLInputElement | null
+                )?.value) ||
+              "";
+            const isValid =
+              /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/i.test(url);
+            return isValid ? (
+              <img src={url} alt="Pet" className={css.form_img} />
+            ) : (
+              <svg width={96} height={96} className={css.paw_icon}>
+                <use href="sprite.svg#icon-paw" />
+              </svg>
+            );
+          })()
+        )}
       </div>
       <div className={css.inputRow}>
         <input
@@ -157,8 +172,40 @@ export default function AddPetForm() {
           placeholder="Enter URL"
           {...register("imgURL")}
         />
-        <button type="button" className={css.uploadBtn} disabled>
-          Upload photo
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={async (e) => {
+            const file = e.target.files?.[0];
+            if (file) {
+              setUploading(true);
+              try {
+                const url = await uploadImageToCloudinary(file);
+                setLocalImg(url);
+                setValue("imgURL", url);
+                toast.success("Photo uploaded!");
+              } catch {
+                toast.error("Photo upload failed");
+              } finally {
+                setUploading(false);
+              }
+            }
+          }}
+          id="pet-photo-upload"
+        />
+        <button
+          type="button"
+          className={css.uploadBtn}
+          disabled={uploading}
+          onClick={() => {
+            const input = document.getElementById(
+              "pet-photo-upload",
+            ) as HTMLInputElement;
+            if (input) input.click();
+          }}
+        >
+          {uploading ? "Uploading..." : "Upload photo"}
           <svg
             width="20"
             height="20"
@@ -194,7 +241,17 @@ export default function AddPetForm() {
           <DatePicker
             className={css.input}
             selected={birthdayValue}
-            onChange={setBirthdayValue}
+            onChange={(date: Date | null) => {
+              setBirthdayValue(date);
+              if (date) {
+                const day = String(date.getDate()).padStart(2, "0");
+                const month = String(date.getMonth() + 1).padStart(2, "0");
+                const year = date.getFullYear();
+                setValue("birthday", `${day}.${month}.${year}`);
+              } else {
+                setValue("birthday", "");
+              }
+            }}
             placeholderText="00.00.0000"
             dateFormat="dd.MM.yyyy"
             showPopperArrow={false}
@@ -211,6 +268,9 @@ export default function AddPetForm() {
             classNamePrefix="custom-select"
             options={speciesOptions}
             placeholder="Type of pet"
+            onChange={(option) => {
+              if (option) setValue("species", option.value);
+            }}
             styles={{
               control: (base) => ({
                 ...base,

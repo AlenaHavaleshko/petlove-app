@@ -32,6 +32,8 @@
   color: rgba(38,38,38,0.5) !important;
   font-size: 18px !important;
 }
+
+
 .custom-select__single-value {
   color: #262626 !important;
   font-size: 18px !important;
@@ -109,6 +111,7 @@ input[type="date"] {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
   display: block;
 }
 .paw_icon {
@@ -123,7 +126,6 @@ input[type="date"] {
 .inputRow {
   display: flex;
   gap: 12px;
-  margin-bottom: 16px;
 }
 
 .input {
@@ -135,11 +137,12 @@ input[type="date"] {
   background: #FFFFFF;
   outline: none;
   transition: border 0.2s;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   width: 100%;
 }
-.input:focus {
-  border: 1.5px solid #54adff;
+.input:focus, input:not(:placeholder-shown) {
+
+  border: 1px solid #F6B83D;
   background: #fff;
 }
 
@@ -159,7 +162,6 @@ input[type="date"] {
 }
 .uploadBtn:disabled {
   opacity: 0.7;
-  cursor: not-allowed;
 }
 
 .error {
@@ -235,7 +237,7 @@ input[type="date"] {
   font-size: 18px;
   background: #fff;
   outline: none;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   appearance: none;
   box-shadow: none;
   position: relative;

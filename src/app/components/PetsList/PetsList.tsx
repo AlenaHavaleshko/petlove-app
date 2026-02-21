@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 export interface Pet {
-  id: string;
-  imageUrl: string;
+  _id: string;
+  imgURL: string;
   title: string;
   name: string;
   birthday: string;
@@ -25,7 +25,7 @@ export default function PetsList() {
 
   const handleDelete = async (petId: string) => {
     await deleteUserPet(petId);
-    setPets((prev) => prev.filter((pet) => pet.id !== petId));
+    setPets((prev) => prev.filter((pet) => pet._id !== petId));
   };
 
   if (loading) return <div>Loading...</div>;
@@ -34,7 +34,7 @@ export default function PetsList() {
   return (
     <div className={css.petsList}>
       {pets.map((pet) => (
-        <PetsItem key={pet.id} pet={pet} onDelete={handleDelete} />
+        <PetsItem key={pet._id} pet={pet} onDelete={handleDelete} />
       ))}
     </div>
   );

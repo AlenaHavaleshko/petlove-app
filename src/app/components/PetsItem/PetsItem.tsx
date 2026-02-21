@@ -9,7 +9,7 @@ interface PetsItemProps {
 export default function PetsItem({ pet, onDelete }: PetsItemProps) {
   return (
     <div className={css.petsItem}>
-      <img className={css.petImage} src={pet.imageUrl} alt={pet.title} />
+      <img className={css.petImage} src={pet.imgURL} alt={pet.title} />
       <div className={css.petInfo}>
         <div className={css.petTitle}>{pet.title}</div>
         <div className={css.petTable}>
@@ -33,7 +33,7 @@ export default function PetsItem({ pet, onDelete }: PetsItemProps) {
       </div>
       <button
         className={css.deleteBtn}
-        onClick={() => onDelete(pet.id)}
+        onClick={() => onDelete(pet._id)}
         title="Delete pet"
       >
         <svg width="24" height="24" aria-hidden="true">

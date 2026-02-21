@@ -25,7 +25,8 @@ export async function getUserPets() {
   if (!response.ok) {
     throw new Error("Failed to fetch pets");
   }
-  return response.json();
+  const data = await response.json();
+  return data.pets || [];
 }
 
 // Удалить питомца пользователя
