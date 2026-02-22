@@ -69,7 +69,6 @@
     max-width: 704px;
     display: flex;
     position: relative;
-    min-height: 592px;
     width: 100%;
   }
   .add_pet_form {

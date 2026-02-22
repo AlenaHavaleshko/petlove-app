@@ -1,14 +1,22 @@
 .custom-select__input-container {
-    height: 42px !important;
-  }
-.custom-select__placeholder {
-  color: rgba(38,38,38,0.5) !important;
-  font-size: 18px !important;
+  height: 42px !important;
 }
+
+/* .custom-select__placeholder {
+  color: rgba(38, 38, 38, 0.5) !important;
+  font-size: 16px !important;
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  display: flex !important;
+  height: 100%;
+} */
+
 .custom-select__single-value {
   color: #262626 !important;
   font-size: 18px !important;
 }
+
 .custom-select__control {
   min-height: 52px !important;
   max-height: 52px !important;
@@ -28,16 +36,17 @@
   position: relative !important;
   cursor: pointer !important;
 }
+
 .custom-select__placeholder {
-  color: rgba(38,38,38,0.5) !important;
+  color: rgba(38, 38, 38, 0.5) !important;
   font-size: 18px !important;
 }
-
 
 .custom-select__single-value {
   color: #262626 !important;
   font-size: 18px !important;
 }
+
 .datepickerWrapper .react-datepicker__input-container input {
   height: 52px;
   border-radius: 30px;
@@ -48,18 +57,22 @@
   padding: 12px 16px;
   box-sizing: border-box;
 }
+
 .react-datepicker__input-container {
   width: 100%;
 }
+
 .react-datepicker__triangle {
   display: none;
 }
+
 .react-datepicker__header,
 .react-datepicker__month,
 .react-datepicker__day,
 .react-datepicker__day-name {
   border-radius: 30px !important;
 }
+
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected {
   background: #54adff !important;
@@ -70,26 +83,32 @@
 input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 16px;
 }
+
 input[type="date"]::-webkit-input-placeholder {
-  color: rgba(38,38,38,0.5);
+  color: rgba(38, 38, 38, 0.5);
 }
+
 input[type="date"]::placeholder {
-  color: rgba(38,38,38,0.5);
+  color: rgba(38, 38, 38, 0.5);
 }
+
 input[type="date"]:invalid {
-  color: rgba(38,38,38,0.5);
+  color: rgba(38, 38, 38, 0.5);
 }
+
 select:invalid {
-  color: rgba(38,38,38,0.5);
+  color: rgba(38, 38, 38, 0.5);
 }
+
 input,
 select,
 input[type="date"] {
   height: 52px;
   box-sizing: border-box;
 }
-.sex_radio input[value="female"]:checked + .sex_circle .sex_icon,
-.sex_radio input[value="male"]:checked + .sex_circle .sex_icon {
+
+.sex_radio input[value="female"]:checked+.sex_circle .sex_icon,
+.sex_radio input[value="male"]:checked+.sex_circle .sex_icon {
   stroke: #fff !important;
   color: #fff !important;
   fill: none !important;
@@ -107,6 +126,7 @@ input[type="date"] {
   overflow: visible;
   box-shadow: none;
 }
+
 .form_img {
   width: 100%;
   height: 100%;
@@ -114,6 +134,7 @@ input[type="date"] {
   border-radius: 50%;
   display: block;
 }
+
 .paw_icon {
   color: #f4b740;
   fill: #f4b740;
@@ -140,7 +161,9 @@ input[type="date"] {
   margin-bottom: 18px;
   width: 100%;
 }
-.input:focus, input:not(:placeholder-shown) {
+
+.input:focus,
+input:not(:placeholder-shown) {
 
   border: 1px solid #F6B83D;
   background: #fff;
@@ -160,6 +183,7 @@ input[type="date"] {
   transition: background 0.2s;
   height: 52px;
 }
+
 .uploadBtn:disabled {
   opacity: 0.7;
 }
@@ -174,7 +198,9 @@ input[type="date"] {
   display: flex;
   gap: 16px;
   margin-top: 24px;
+  justify-content: flex-end;
 }
+
 .backBtn {
   background: #f5f6fb;
   color: #262626;
@@ -185,6 +211,7 @@ input[type="date"] {
   cursor: pointer;
   transition: background 0.2s;
   height: 52px;
+  width: 100px;
 }
 
 .saveBtn {
@@ -196,7 +223,10 @@ input[type="date"] {
   font-size: 16px;
   cursor: pointer;
   transition: background 0.2s;
+  height: 52px;
+  width: 100px;
 }
+
 .saveBtn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
@@ -206,29 +236,34 @@ input[type="date"] {
   position: relative;
   flex: 1 1 0;
 }
+
 .calendarIcon {
   position: absolute;
-      right: 16px;
-    top: 25px;
+  right: 16px;
+  top: 25px;
   transform: translateY(-50%);
   pointer-events: none;
   display: flex;
   align-items: center;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
+
 input[type="date"] {
   position: relative;
   z-index: 2;
   background: transparent;
 }
+
 .selectWrapper {
   flex: 1 1 0;
 }
+
 .inputRow select {
   width: 100%;
   border: 1px solid #e0e0e0;
@@ -243,16 +278,20 @@ input[type="date"] {
   position: relative;
   color: #262626;
 }
+
 .inputRow select:focus {
   border: 1.5px solid #54adff;
 }
+
 /* Кастомная стрелка */
 .inputRow {
   position: relative;
 }
+
 .inputRow select::-ms-expand {
   display: none;
 }
+
 .inputRow select::after {
   content: '';
   position: absolute;
@@ -264,6 +303,7 @@ input[type="date"] {
   background: url('/public/title/arrow-down.svg') no-repeat center/contain;
   transform: translateY(-50%);
 }
+
 /* Стили выпадающего списка */
 .inputRow select option {
   background: #fff;
@@ -272,6 +312,7 @@ input[type="date"] {
   border-radius: 30px;
   padding: 12px 12px;
 }
+
 .pet_form {
   border-radius: 30px;
   background: #fff;
@@ -331,24 +372,28 @@ input[type="date"] {
 }
 
 /* Цвета для каждого варианта */
-.sex_radio input[value="female"] + .sex_circle {
+.sex_radio input[value="female"]+.sex_circle {
   background: #F43F5E1A;
 }
-.sex_radio input[value="male"] + .sex_circle {
+
+.sex_radio input[value="male"]+.sex_circle {
   background: #54ADFF1A;
 }
-.sex_radio input[value="other"] + .sex_circle {
+
+.sex_radio input[value="other"]+.sex_circle {
   background: #FFF4DF;
 }
 
 /* Активный (checked) вариант */
-.sex_radio input[value="female"]:checked + .sex_circle {
+.sex_radio input[value="female"]:checked+.sex_circle {
   background: #f44a7a;
 }
-.sex_radio input[value="male"]:checked + .sex_circle {
+
+.sex_radio input[value="male"]:checked+.sex_circle {
   background: #54adff;
 }
-.sex_radio input[value="other"]:checked + .sex_circle {
+
+.sex_radio input[value="other"]:checked+.sex_circle {
   background: #f4b740;
 }
 
@@ -362,23 +407,25 @@ input[type="date"] {
 }
 
 /* Цветные иконки для неактивных */
-.sex_radio input[value="female"] + .sex_circle .sex_icon {
+.sex_radio input[value="female"]+.sex_circle .sex_icon {
   color: #f44a7a;
   fill: #f44a7a;
 }
-.sex_radio input[value="male"] + .sex_circle .sex_icon {
+
+.sex_radio input[value="male"]+.sex_circle .sex_icon {
   color: #54adff;
   fill: #54adff;
 }
-.sex_radio input[value="other"] + .sex_circle .sex_icon {
+
+.sex_radio input[value="other"]+.sex_circle .sex_icon {
   color: #f4b740;
   fill: #f4b740;
 }
 
 /* Белая иконка для активной */
-.sex_radio input[value="female"]:checked + .sex_circle .sex_icon,
-.sex_radio input[value="male"]:checked + .sex_circle .sex_icon,
-.sex_radio input[value="other"]:checked + .sex_circle .sex_icon {
+.sex_radio input[value="female"]:checked+.sex_circle .sex_icon,
+.sex_radio input[value="male"]:checked+.sex_circle .sex_icon,
+.sex_radio input[value="other"]:checked+.sex_circle .sex_icon {
   color: #fff;
   fill: #fff;
   stroke: #fff;
@@ -399,4 +446,28 @@ input[type="date"] {
 .custom-select__control {
   padding-right: 16px;
   border-right: 1px solid #e0e0e0;
+}
+
+@media screen and (min-width: 768px) {
+
+  .backBtn {
+    width: 170px;
+  }
+
+  .saveBtn {
+    width: 170px;
+  }
+
+  .buttonRow {
+    justify-content: flex-end;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .custom-select__placeholder {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
 }

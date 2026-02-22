@@ -2,8 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: 60px;
+  gap: 6px;
+  margin-top: 44px;
+  width: 100%;
+  max-width: 334px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .paginationButton {
@@ -13,12 +17,12 @@
   min-width: 40px;
   height: 40px;
   padding: 8px;
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: 1px solid rgba(38, 38, 38, 0.2);
   border-radius: 50%;
   background-color: transparent;
   color: #262626;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -44,7 +48,7 @@
 
 .pageNumbers {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
 }
 
@@ -64,14 +68,19 @@
   justify-content: center;
   min-width: 40px;
   height: 40px;
+  border: 1px solid rgba(38, 38, 38, 0.2);
+  border-radius: 50%;
   color: #262626;
   font-size: 14px;
+  font-weight: 700;
   user-select: none;
 }
 
 @media screen and (min-width: 768px) {
   .pagination {
-    gap: 12px;
+    gap: 10px;
+    max-width: none;
+    margin-top: 60px;
   }
 
   .paginationButton {
@@ -85,7 +94,7 @@
   }
 
   .pageNumbers {
-    gap: 12px;
+    gap: 10px;
   }
 
   .pageButton {

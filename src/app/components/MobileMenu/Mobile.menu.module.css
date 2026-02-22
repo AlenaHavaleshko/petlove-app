@@ -1,8 +1,8 @@
 .mobile_menu {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  right: 0;
+  width: 218px;
   height: 100vh;
   background: #fff;
   display: flex;
@@ -15,8 +15,8 @@
 .mobile_menu_orange {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  right: 0;
+  width: 218px;
   height: 100vh;
   background: #f6b83d;
   display: flex;
@@ -24,6 +24,13 @@
   justify-content: space-between;
   z-index: 1000;
   overflow-y: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .mobile_menu,
+  .mobile_menu_orange {
+    width: 374px;
+  }
 }
 
 .mobile_mop {
@@ -106,10 +113,17 @@
   gap: 8px;
 }
 
+@media screen and (min-width: 768px) {
+  .mobile_btns {
+    flex-direction: row;
+  }
+}
+
 .mobile_registration {
-  background: #fff4df;
+  background: #fff;
   border-radius: 30px;
-  padding: 12px 41px;
+  padding: 12px 20px;
+  height: 50px;
   font-weight: 700;
   font-size: 14px;
   line-height: 129%;
@@ -117,39 +131,74 @@
   text-transform: uppercase;
   color: #f6b83d;
   cursor: pointer;
+  border: none;
 }
 
 .mobile_registration:hover {
-  background: #fbe7c1;
+  background: #fff4df;
+}
+
+.mobile_registration_home {
+  background: #fff4df;
+  border-radius: 30px;
+  padding: 12px 20px;
+  height: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f6b83d;
+  cursor: pointer;
+  border: 1px solid #f6b83d;
+}
+
+.mobile_registration_home:hover {
+  background: #fff4df;
 }
 
 .mobile_logout,
 .mobile_login {
   background: #f6b83d;
   border-radius: 30px;
-  padding: 12px 67px;
+  padding: 12px 20px;
+  height: 50px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 125%;
   letter-spacing: -0.03em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: #fff;
   cursor: pointer;
+  border: none;
+}
+
+.mobile_logout:hover,
+.mobile_login:hover {
+  background: #e5a835;
 }
 
 .mobile_logout_orange,
 .mobile_login_orange {
-  border: 1px solid rgba(255, 255, 255, 0.5);
   background: #f6b83d;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 30px;
-  padding: 12px 0;
+  padding: 12px 20px;
+  height: 50px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 125%;
   letter-spacing: -0.03em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: #fff;
   cursor: pointer;
+}
+
+.mobile_logout_orange:hover,
+.mobile_login_orange:hover {
+  background: #e5a835;
 }
 
 .mobile_user {
@@ -157,10 +206,11 @@
   align-items: center;
   gap: 8px;
   border-radius: 30px;
-  padding: 10px 16px;
+  padding: 9px 9px;
   background-color: #fff4df;
   text-decoration: none;
 }
+
 
 .mobile_user:hover {
   background-color: #fbe7c1;
@@ -232,21 +282,31 @@
 
   .mobile_registration {
     font-size: 16px;
+    padding: 15px 35px;
+  }
+
+  .mobile_registration_home {
+    font-size: 16px;
+    padding: 15px 35px;
+    background: #FFF4DF;
   }
 
   .mobile_logout,
   .mobile_login {
     font-size: 16px;
+    padding: 15px 35px;
   }
 
   .mobile_logout_orange,
   .mobile_login_orange {
     font-size: 16px;
+    padding: 15px 35px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .mobile_menu {
+  .mobile_menu,
+  .mobile_menu_orange {
     display: none;
   }
 }

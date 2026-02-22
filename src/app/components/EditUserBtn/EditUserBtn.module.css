@@ -1,7 +1,7 @@
- .editUserBtn {
+.editUserBtn {
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 18px;
+  right: 18px;
   background: #FFF4DF;
   border: none;
   border-radius: 50%;
@@ -14,11 +14,26 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 0;
   overflow: hidden;
- }
+}
+
+@media (min-width: 768px) {
+  .editUserBtn {
+    top: 40px;
+    right: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .editUserBtn {
+    top: 40px;
+    right: 40px;
+  }
+}
+
 .editUserBtn svg {
-	display: block;
-	width: 20px;
-	height: 20px;
-	stroke: #F6B83D;
- fill:none;
+  display: block;
+  width: 18px;
+  height: 18px;
+  stroke: #F6B83D;
+  fill: none;
 }

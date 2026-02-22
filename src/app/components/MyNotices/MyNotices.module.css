@@ -1,24 +1,45 @@
 .tabs {
   display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 .tab {
-  padding: 8px 20px;
-  border-radius: 20px;
-  background: #f5f5f5;
+  padding: 12px 16px;
+  border-radius: 30px;
+  background: transparent;
   cursor: pointer;
   font-weight: 500;
+  font-size: 14px;
   border: none;
   outline: none;
   transition: background 0.2s;
+  color: #262626;
 }
 .tabActive {
-  background: #ffd700;
-  color: #222;
+  background: #f6b83d;
+  color: #fff;
 }
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .tabs {
+    gap: 12px;
+  }
+
+  .tab {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }

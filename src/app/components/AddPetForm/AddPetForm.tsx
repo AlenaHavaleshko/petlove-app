@@ -14,17 +14,13 @@ import css from "./AddPetForm.module.css";
 const schema = Yup.object().shape({
   imgURL: Yup.string()
     .required("Image URL is required")
-    .matches(
-      /^https?:\/\/.+/i,
-      "Enter a valid image URL",
-    ),
+    .matches(/^https?:\/\/.+/i, "Enter a valid image URL"),
   title: Yup.string().required("Title is required"),
   name: Yup.string().required("Pet's name is required"),
   birthday: Yup.string()
     .required("Birthday is required")
     .matches(/^\d{2}\.\d{2}\.\d{4}$/, "Enter date in format DD.MM.YYYY"),
-  species: Yup.string()
-    .required("Type of pet is required"),
+  species: Yup.string().required("Type of pet is required"),
   sex: Yup.string().required("Sex is required"),
 });
 
@@ -311,7 +307,7 @@ export default function AddPetForm() {
               placeholder: (base) => ({
                 ...base,
                 color: "rgba(38,38,38,0.5)",
-                fontSize: 18,
+                fontSize: 16,
                 height: 30,
               }),
               singleValue: (base) => ({

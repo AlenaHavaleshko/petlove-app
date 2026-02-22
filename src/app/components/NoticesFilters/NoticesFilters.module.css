@@ -1,26 +1,26 @@
 ﻿.noticesFilters {
   width: 100%;
-  padding: 2rem;
+  padding: 20px;
   background-color: #fff4df;
-  border-radius: 16px;
+  border-radius: 30px;
   margin-bottom: 2rem;
 }
 
 .topRow {
   display: flex;
-  gap: 0.75rem;
+  gap: 12px;
   flex-wrap: wrap;
   position: relative;
 }
 
 .topRow::after {
   content: '';
-  position: absolute;
-  bottom: 20px;
+  bottom: 5px;
   left: 0;
   right: 0;
   height: 1px;
   background-color: rgba(38, 38, 38, 0.1);
+  margin-top: 8px;
 }
 
 .selectWrapper {
@@ -31,7 +31,7 @@
 
 .bottomRow {
   display: flex;
-  gap: 0.5rem;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -58,12 +58,15 @@
   color: #262626;
   cursor: pointer;
 }
+.bottomRow {
+    margin-top: 20px;
+}
 
 .sortButton {
-  padding: 0.75rem 1.5rem;
+  padding: 12px;
   border: none;
   border-radius: 30px;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 500;
   background-color: white;
   color: #262626;
@@ -71,8 +74,10 @@
   transition: all 0.2s;
   white-space: nowrap;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: 10px;
+  max-width: fit-content;
 }
 
 .closeIcon {
@@ -88,16 +93,25 @@
 .sortButton.active {
   background-color: #f6b83d;
   color: white;
-}
+} 
 
 /* React-select custom styles */
 :global(.select__control) {
   border: none !important;
   border-radius: 30px !important;
-  min-height: 44px !important;
+  min-height: 48px !important;
+  height: 48px !important;
   box-shadow: none !important;
   cursor: pointer !important;
   background-color: white !important;
+}
+
+:global(.select__value-container) {
+  padding: 0 14px 0 14px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
 }
 
 :global(.select__control:hover) {
@@ -111,16 +125,26 @@
 :global(.select__placeholder) {
   color: #262626 !important;
   font-size: 0.875rem !important;
+  margin: 0 !important;
+  position: absolute !important;
+  top: 45% !important;
+  transform: translateY(-50%) !important;
 }
 
 :global(.select__single-value) {
   color: #262626 !important;
   font-size: 0.875rem !important;
+  margin: 0 !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
 }
 
 :global(.select__input-container) {
   color: #262626 !important;
   font-size: 0.875rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 :global(.select__menu) {
@@ -172,13 +196,44 @@
   color: #262626 !important;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .noticesFilters {
-    padding: 1.5rem;
+    padding: 40px 32px;
   }
 
   .topRow {
+    gap: 12px;
+  }
+
+  .topRow::after {
+  content: '';
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(38, 38, 38, 0.1);
+  margin-top: 8px;
+}
+
+  .bottomRow {
+    gap: 40px;
+  }
+
+  :global(.select__control) {
+    min-height: 42px !important;
+    height: 42px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .topRow {
     flex-direction: column;
+    gap: 16px;
+  }
+
+  .bottomRow {
+    gap: 16px;
   }
 
   .searchWrapper,

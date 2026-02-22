@@ -10,7 +10,8 @@
 
 .searchInput {
   width: 100%;
-  padding: 0.875rem 3.5rem 0.875rem 1rem;
+  height: 48px;
+  padding: 0 50px 0 16px;
   border: none;
   border-radius: 30px;
   font-size: 0.875rem;
@@ -35,7 +36,7 @@
 
 .searchIcons {
   position: absolute;
-  right: 50px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -67,11 +68,12 @@
 
 @media screen and (min-width: 768px) {
   .searchForm {
-    margin-bottom: 40px;
+    margin-bottom: 0px;
   }
 
   .searchInput {
-    padding: 14px 60px 14px 16px;
+    height: 42px;
+    padding: 0 60px 0 16px;
     font-size: 16px;
     line-height: 1.25;
   }

@@ -128,7 +128,14 @@ function MobileMenu({ isOpenMobileMenu, onClose, isHome }: MobileMenuProps) {
                   Log In
                 </Link>
               </button>
-              <button className={css.mobile_registration} type="button">
+              <button
+                className={
+                  isHome
+                    ? css.mobile_registration_home
+                    : css.mobile_registration
+                }
+                type="button"
+              >
                 <Link to="/register" onClick={onClose}>
                   Registration
                 </Link>

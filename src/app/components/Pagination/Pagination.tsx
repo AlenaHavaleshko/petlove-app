@@ -1,4 +1,5 @@
 import css from "./Pagination.module.css";
+import { useState, useEffect } from "react";
 
 interface PaginationProps {
   currentPage: number;
@@ -11,6 +12,16 @@ function Pagination({
   totalPages,
   onPageChange,
 }: PaginationProps) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Hide pagination if only one page or invalid data
   if (!totalPages || totalPages <= 1) {
     return null;
@@ -22,23 +33,28 @@ function Pagination({
 
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
-    const maxVisiblePages = 3;
+    const maxVisiblePages = isMobile ? 2 : 3;
 
-    if (validTotalPages <= maxVisiblePages + 2) {
+    if (validTotalPages <= maxVisiblePages + 1) {
       // Show all pages if total is small
       for (let i = 1; i <= validTotalPages; i++) {
         pages.push(i);
       }
+    } else if (isMobile) {
+      // Mobile: show 1, 2, ...
+      pages.push(1);
+      pages.push(2);
+      pages.push("...");
     } else {
       // Always show first page
       pages.push(1);
 
       if (validCurrentPage <= 3) {
         // Show pages 2, 3, 4 and ellipsis
-        for (let i = 2; i <= Math.min(4, validTotalPages - 1); i++) {
+        for (let i = 2; i <= Math.min(3, validTotalPages - 1); i++) {
           pages.push(i);
         }
-        if (validTotalPages > 4) {
+        if (validTotalPages > 3) {
           pages.push("...");
         }
         if (validTotalPages > 1) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import {fetchNews} from "../../../services/api";
-import  type {NewsItem, NewsResponse} from "../../../services/types";
+import { fetchNews } from "../../../services/api";
+import type { NewsItem, NewsResponse } from "../../../services/types";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import SearchField from "../../components/SearchField/SearchField";
 import NewsList from "../../components/NewsList/NewsList";
@@ -59,7 +59,9 @@ function News() {
       <div className={css.container}>
         <div className={css.newTileWrapper}>
           <PageTitle>News</PageTitle>
-          <SearchField onSearch={handleSearch} placeholder="Search" />
+          <div className={css.searchWrapper}>
+            <SearchField onSearch={handleSearch} placeholder="Search" />
+          </div>
         </div>
 
         {isLoading && <Loader />}

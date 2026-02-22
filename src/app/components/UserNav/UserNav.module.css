@@ -1,6 +1,17 @@
 .user_nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .user_nav {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@media (min-width: 1280px) {
+  
 }

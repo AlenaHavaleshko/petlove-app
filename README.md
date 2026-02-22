@@ -1,73 +1,172 @@
-# React + TypeScript + Vite
+# Petlove App 🐾
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application for pet lovers to manage their pets, find friends for their pets, browse notices, and connect with pet-related services.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[View on Vercel](https://petlove-app.vercel.app)
 
-## React Compiler
+## 📋 About the Project
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+**Petlove** is a comprehensive pet management platform that allows users to:
 
-## Expanding the ESLint configuration
+- 🔐 Register and authenticate
+- 🐶 Add and manage their pets with photos (via Cloudinary upload)
+- 📰 Browse pet-related news
+- 🔔 View pet adoption notices with filtering and pagination
+- 🤝 Find friends and pet services in your area
+- 👤 Manage user profile with avatar upload
+- ❤️ Save favorite notices
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Technologies Used
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Core
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Routing & State
+
+- **React Router DOM v7** - Client-side routing
+- **React Context API** - Global state management (Auth, Favorites, Loader)
+
+### Forms & Validation
+
+- **React Hook Form** - Form state management
+- **Yup** - Schema validation
+
+### UI Components
+
+- **React Select** - Custom select dropdowns
+- **React DatePicker** - Date input component
+- **React Toastify** - Toast notifications
+- **React Spinners** - Loading indicators
+
+### Styling
+
+- **CSS Modules** - Scoped component styles
+- **Modern Normalize** - CSS reset
+
+### Backend Integration
+
+- RESTful API with JWT authentication
+- **Cloudinary** - Image upload and storage
+
+## 📐 Design
+
+- [Figma Mockup](https://www.figma.com/design/puMNfZVg4YI8UZoJ1QiLLi/Petl%F0%9F%92%9Bve?node-id=55838-750&t=Qp1p3B0PkgTlWxjo-0)
+
+## 📱 Features
+
+### Responsive Design
+
+- Mobile-first approach
+- Breakpoints: 375px, 768px, 1280px
+- Semantic HTML5 markup
+- Valid and accessible
+
+### Pages
+
+- `/` - Main landing page
+- `/home` - Home page with app introduction
+- `/news` - Pet-related news with search and pagination
+- `/notices` - Pet adoption notices with filters
+- `/friends` - Pet services and organizations
+- `/register` - User registration
+- `/login` - User authentication
+- `/profile` - User profile with pets management
+- `/add-pet` - Add new pet form (protected route)
+
+### Authentication
+
+- JWT token-based authentication
+- Protected routes for authenticated users
+- Persistent login state
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/petlove-app.git
+
+# Navigate to project directory
+cd petlove-app
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── components/     # Reusable UI components
+│   │   ├── AddPetForm/
+│   │   ├── Header/
+│   │   ├── LoginForm/
+│   │   ├── PetsList/
+│   │   └── ...
+│   └── pages/          # Page components
+│       ├── Home/
+│       ├── News/
+│       ├── Notices/
+│       └── ...
+├── context/            # React Context providers
+│   ├── AuthContext.tsx
+│   ├── FavoritesContext.tsx
+│   └── LoaderContext.tsx
+├── services/           # API services
+│   └── api/
+│       ├── cloudinary.ts
+│       ├── friends.ts
+│       ├── news.ts
+│       ├── notices.ts
+│       └── users.ts
+├── assets/             # Static assets
+├── App.tsx             # Main app component
+├── Layout.tsx          # Layout wrapper
+└── main.tsx            # Entry point
+```
+
+## 📜 Technical Requirements
+
+- ✅ Interface matches mockup and displays correctly on all devices
+- ✅ Semantic and valid HTML markup
+- ✅ No console errors
+- ✅ React with TypeScript
+- ✅ Form validation with Yup
+- ✅ Routing with React Router
+- ✅ Formatted code without unnecessary comments
+- ✅ Deployed on Vercel
+
+## 👨‍💻 Author
+
+Created as a portfolio project for GoIT bootcamp.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).

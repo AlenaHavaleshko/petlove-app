@@ -43,6 +43,23 @@
   stroke: #f6b83d;
 }
 
+.modal_image_wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fff4df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.modal_image {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
 .modal_title {
   font-weight: 700;
   font-size: 28px;

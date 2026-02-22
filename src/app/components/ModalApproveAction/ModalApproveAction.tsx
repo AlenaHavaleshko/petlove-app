@@ -13,7 +13,7 @@ function ModalApproveAction({
   isOpen,
   onClose,
   onConfirm,
-  title = "Log out",
+  title = "Already leaving?",
   message = "Are you sure you want to log out?",
 }: ModalApproveActionProps) {
   useEffect(() => {
@@ -57,6 +57,9 @@ function ModalApproveAction({
             <use href="/sprite.svg#icon-cross" />
           </svg>
         </button>
+        <div className={css.modal_image_wrapper}>
+          <img src="/🐈.png" alt="cat" className={css.modal_image} />
+        </div>
         <h2 className={css.modal_title}>{title}</h2>
         <p className={css.modal_message}>{message}</p>
         <div className={css.modal_buttons}>
