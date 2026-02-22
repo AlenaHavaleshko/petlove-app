@@ -1,3 +1,6 @@
+import { API_BASE_URL } from "../apiBase";
+import type { NoticesResponse, FetchNoticesParams, Location } from "../types/notices";
+
 // Получить избранные объявления пользователя
 export async function fetchFavorites(): Promise<import("../types/notices").Notice[]> {
   const token = localStorage.getItem('petlove_token');
@@ -8,8 +11,6 @@ export async function fetchFavorites(): Promise<import("../types/notices").Notic
   if (!response.ok) throw new Error('Failed to fetch favorites');
   return response.json();
 }
-import { API_BASE_URL } from "../apiBase";
-import type { NoticesResponse, FetchNoticesParams, Location } from "../types/notices";
 
 export async function fetchNotices({
   page = 1,
@@ -101,7 +102,9 @@ export async function addToFavorites(id: string): Promise<void> {
         try {
           const { toast } = await import('react-toastify');
           toast.info('This notice is already in favorites');
-        } catch {}
+        } catch {
+          // toast unavailable — ignore
+        }
       }
       return;
     }

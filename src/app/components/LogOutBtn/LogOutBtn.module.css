@@ -11,16 +11,16 @@
   line-height: 125%;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: #F6B83D;
+  color: #FFFFFF;
   cursor: pointer;
-  border: 1px solid #F6B83D;
+  border: 1px solid #FFFFFF66;
   width: fit-content;
 }
 
 .logout_btn:hover,
 .logout_btn_home:hover {
-  background: #F6B83D;
-  color: #fff;
+  background: #FFF4DF;
+  color: #F6B83D;
 }
 
 @media screen and (min-width: 768px) {

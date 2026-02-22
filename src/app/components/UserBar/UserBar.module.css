@@ -1,31 +1,25 @@
 .user_bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background-color: #f6b83d;
+  gap: 16px;
+  background: transparent;
   border-radius: 30px;
   cursor: pointer;
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.user_bar:hover {
-  background: #F9B020;
+  color: #262626;
 }
 
 .user_avatar {
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  background: #FFF4DF;
   flex-shrink: 0;
 }
 
@@ -36,36 +30,35 @@
 }
 
 .avatar_icon {
-  fill: #fff;
-  width: 20px;
-  height: 20px;
+  fill: #F6B83D;
+  width: 24px;
+  height: 24px;
 }
 
 .user_name {
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: #fff;
 }
 
 @media screen and (min-width: 768px) {
   .user_bar {
-    padding: 10px 20px;
+    gap: 16px;
   }
 
   .user_avatar {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 
   .avatar_icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   .user_name {
-    font-size: 16px;
+    font-size: 20px;
   }
 }

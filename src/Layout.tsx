@@ -9,8 +9,8 @@ function Layout() {
   return (
     <div>
       <Header />
-      {isLoading && <Loader key={Date.now()} />}
-      <Outlet />
+      {isLoading && <Loader/>}
+       <Outlet />
     </div>
   );
 }
