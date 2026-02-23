@@ -10,7 +10,7 @@ function UserNav({ isHome }: UserNavProps) {
   return (
     <div className={css.user_nav}>
       <LogOutBtn isHome={isHome} />
-      <UserBar />
+      <UserBar isHome={isHome} />
     </div>
   );
 }

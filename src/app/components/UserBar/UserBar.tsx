@@ -2,7 +2,11 @@ import css from "./UserBar.module.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/useAuth";
 
-function UserBar() {
+interface UserBarProps {
+  isHome?: boolean;
+}
+
+function UserBar({ isHome }: UserBarProps) {
   const { user } = useAuth();
 
   return (
@@ -12,7 +16,7 @@ function UserBar() {
           <use href="/sprite.svg#icon-user" />
         </svg>
       </div>
-      <span className={css.user_name}>{user?.name || "User"}</span>
+      <span className={isHome ? css.user_name_home : css.user_name}>{user?.name || "User"}</span>
     </Link>
   );
 }

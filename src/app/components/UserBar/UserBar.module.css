@@ -38,9 +38,15 @@
 .user_name {
   font-size: 20px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #262626;
   line-height: 129%;
   letter-spacing: -0.03em;
+}
+
+.user_name_home {
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 768px) {
