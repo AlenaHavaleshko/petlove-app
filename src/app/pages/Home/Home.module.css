@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
   position: relative;
   z-index: 1;
 }
@@ -13,6 +14,7 @@
   flex-direction: column;
   background: #f6b83d;
   border-radius: 30px;
+  min-height: 390px;
 }
 
 .home_box_title {
@@ -22,12 +24,10 @@
 
 .home_title {
   font-weight: 700;
-  font-size: 50px;
+  font-size: 49px;
   line-height: 96%;
   letter-spacing: -0.03em;
   color: #fff;
-  padding-left: 31px;
-  
 }
 
 .home_span {
@@ -36,12 +36,13 @@
 
 .home_text {
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: -0.02em;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
   color: #fff;
   max-width: 255px;
   padding-right: 11px;
+  max-width: 295px;
 }
 
 .home_top,
@@ -56,6 +57,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  min-height: 390px;
+  border-radius: 30px;
+
 }
 
 @media screen and (min-resolution: 2dppx) {
@@ -107,6 +111,8 @@
 @media screen and (min-width: 1280px) {
   .home_top {
     padding: 178px 64px 32px 64px;
+    border-radius: 60px;
+    height: 384px;
   }
 
   .home_box_title {
@@ -128,6 +134,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    border-radius: 60px;
+    height: 384px;
   }
 
   @media screen and (min-resolution: 2dppx) {

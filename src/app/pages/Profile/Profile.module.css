@@ -1,12 +1,9 @@
-/* Profile page main wrapper */
 .profile {
   padding: 96px 0 80px 0;
   background-color: #f9f9f9;
   min-height: 100vh;
-  margin-top: 50px;
 }
 
-/* Container for content */
 .container {
   width: 100%;
   max-width: 335px;
@@ -30,9 +27,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .profile {
-
-  }
+  .profile {}
 
   .container {
     max-width: 1216px;
@@ -43,7 +38,6 @@
   }
 }
 
-/* MyNotices block */
 .myNotices {
   flex: 1 1 0%;
   background: transparent;

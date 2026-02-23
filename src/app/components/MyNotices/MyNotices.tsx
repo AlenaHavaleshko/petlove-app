@@ -1,6 +1,7 @@
 import { useState } from "react";
 import css from "./MyNotices.module.css";
 import NoticesItem from "../NoticesItem/NoticesItem";
+import ModalNotice from "../ModalNotice/ModalNotice";
 import type { Notice } from "../../../services/types/notices";
 import { useFavorites } from "../../../context/useFavorites";
 import { getViewedNotices } from "../../../services/viewedNotices";
@@ -9,6 +10,7 @@ export default function MyNotices() {
   const [activeTab, setActiveTab] = useState<"favorites" | "viewed">(
     "favorites",
   );
+  const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
 
   const { favorites } = useFavorites();
   const [viewed] = useState<Notice[]>(() => getViewedNotices());
@@ -46,13 +48,19 @@ export default function MyNotices() {
               key={notice._id}
               notice={notice}
               onAuthAction={() => true}
-              onLearnMore={() => {}}
+              onLearnMore={(n) => setSelectedNotice(n)}
               hideFavorite={activeTab === "viewed"}
               showRemoveBtn={activeTab === "favorites"}
             />
           ))}
         </ul>
       )}
+
+      <ModalNotice
+        isOpen={!!selectedNotice}
+        onClose={() => setSelectedNotice(null)}
+        notice={selectedNotice}
+      />
     </div>
   );
 }
