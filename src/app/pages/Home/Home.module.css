@@ -2,13 +2,12 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
   position: relative;
   z-index: 1;
 }
 
 .home_top {
-  padding: 118px 20px 0 20px;
+  padding: 128px 20px 0 20px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -70,7 +69,8 @@
 
 @media screen and (min-width: 768px) {
   .home_top {
-    padding: 178px 32px 0 32px;
+    padding: 93px 32px 0 32px;
+     max-height: 496px;
   }
 
   .home_box_title {
@@ -80,7 +80,6 @@
 
   .home_title {
     font-size: 80px;
-    line-height: 96%;
   }
 
   .home_box_text {
@@ -90,7 +89,7 @@
   }
 
   .home_text {
-    font-size: 18px;
+    font-size: 17px;
     max-width: 255px;
   }
 
@@ -99,6 +98,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    max-height: 496px;
   }
 
   @media screen and (min-resolution: 2dppx) {
@@ -127,6 +127,7 @@
   .home_title {
     font-size: 90px;
     line-height: 97%;
+    margin-left: 31px;
   }
 
   .home_bottom {
