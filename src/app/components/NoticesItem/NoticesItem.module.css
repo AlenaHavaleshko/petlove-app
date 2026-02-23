@@ -218,11 +218,12 @@
 @media (min-width: 1280px) {
   .noticesList {
     gap: 32px;
+    
   }
 
-  .noticeItem {
+  /* .noticeItem {
     width: calc(33.333% - 21.333px);
-  }
+  } */
 
   .imageWrapper {
     height: 178px;

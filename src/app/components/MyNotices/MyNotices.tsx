@@ -22,6 +22,22 @@ const mockViewed: Notice[] = [
     user: "",
     createdAt: "2023-12-11T10:43:28.477Z",
   },
+  {
+  _id: "3",
+  title: "Viewed Pet 3",
+  name: "Max",
+  birthday: "2020-08-22",
+  sex: "male",
+  imgURL: "https://ftp.goit.study/img/pets/3.webp",
+  popularity: 2,
+  isFavorite: false,
+  species: "dog",
+  category: "sell",
+  comment: "",
+  location: "",
+  user: "",
+  createdAt: "2023-12-12T09:15:18.320Z",
+},
 ];
 
 export default function MyNotices() {

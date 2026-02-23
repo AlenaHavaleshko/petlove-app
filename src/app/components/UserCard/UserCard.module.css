@@ -87,6 +87,7 @@
   .userCard {
     width: 520px;
     max-width: 520px;
+    margin-top: 0px;
     gap: 20px;
   }
 }
