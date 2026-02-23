@@ -13,47 +13,45 @@ import AddPet from "./app/pages/AddPet/AddPet";
 import PrivateRoute from "./app/components/PrivateRoute/PrivateRoute";
 import Profile from "./app/pages/Profile/Profile";
 import Layout from "./Layout";
-import { FavoritesProvider } from "./context/FavoritesContext";
+import { FavoritesProvider } from "./context/FavoritesProvider";
 
 function App() {
   return (
     <FavoritesProvider>
-      <div>
-        <Routes>
-          <Route path="/" element={<Main />} />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="home" element={<Home />} />
+          <Route path="news" element={<News />} />
+          <Route path="notices" element={<Notices />} />
+          <Route path="friends" element={<Friends />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="profile" element={<Profile />} />
+          <Route
+            path="add-pet"
+            element={
+              <PrivateRoute>
+                <AddPet />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
 
-          <Route path="/" element={<Layout />}>
-            <Route path="home" element={<Home />} />
-            <Route path="news" element={<News />} />
-            <Route path="notices" element={<Notices />} />
-            <Route path="friends" element={<Friends />} />
-            <Route path="register" element={<Register />} />
-            <Route path="login" element={<Login />} />
-            <Route path="profile" element={<Profile />} />
-            <Route
-              path="add-pet"
-              element={
-                <PrivateRoute>
-                  <AddPet />
-                </PrivateRoute>
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </FavoritesProvider>
   );
 }

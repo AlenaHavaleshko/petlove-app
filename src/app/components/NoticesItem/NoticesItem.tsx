@@ -1,77 +1,56 @@
 import { useState } from "react";
-import { type Notice } from "../../../services/types/notices";
-import {
-  addToFavorites,
-  removeFromFavorites,
-} from "../../../services/api/notices";
+import type { Notice } from "../../../services/types/notices";
+import { addToFavorites, removeFromFavorites } from "../../../services/api/notices";
+import { useFavorites } from "../../../context/useFavorites";
 import css from "./NoticesItem.module.css";
 
 interface NoticesItemProps {
   notice: Notice;
   onAuthAction: () => boolean;
   onLearnMore: (notice: Notice) => void;
-  onFavoriteToggle?: () => void;
 }
 
-export default function NoticesItem({
-  notice,
-  onAuthAction,
-  onLearnMore,
-  onFavoriteToggle,
-}: NoticesItemProps) {
-  const [isFavorite, setIsFavorite] = useState(notice.isFavorite || false);
+export default function NoticesItem({ notice, onAuthAction, onLearnMore }: NoticesItemProps) {
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
   const [isLoading, setIsLoading] = useState(false);
+
+  const isFavorite = favorites.some((f) => f._id === notice._id);
 
   const handleLearnMore = () => {
     onLearnMore(notice);
   };
 
   const handleFavorite = async () => {
-    console.log("Favorite button clicked", {
-      noticeId: notice._id,
-      currentState: isFavorite,
-    });
+    if (!onAuthAction()) return;
 
-    if (!onAuthAction()) {
-      console.log("User not authenticated - showing modal");
-      return;
-    }
-
-    console.log("User authenticated - processing favorite toggle");
-
-    // Оптимістичне оновлення UI - відразу змінюємо стан
-    const previousState = isFavorite;
-    setIsFavorite(!isFavorite);
     setIsLoading(true);
 
+    // оптимистическое обновление UI
     try {
-      if (previousState) {
-        console.log("Removing from favorites...");
+      if (isFavorite) {
+        removeFavorite(notice._id);
         await removeFromFavorites(notice._id);
-        console.log("Successfully removed from favorites");
       } else {
-        console.log("Adding to favorites...");
+        addFavorite(notice);
         await addToFavorites(notice._id);
-        console.log("Successfully added to favorites");
       }
-      onFavoriteToggle?.();
     } catch (error) {
       console.error("Error toggling favorite:", error);
-      // Якщо помилка - повертаємо попередній стан
-      setIsFavorite(previousState);
+      // откат изменений в случае ошибки
+      if (isFavorite) {
+        addFavorite(notice);
+      } else {
+        removeFavorite(notice._id);
+      }
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <li key={notice._id} className={css.noticeItem}>
+    <li className={css.noticeItem}>
       <div className={css.imageWrapper}>
-        <img
-          src={notice.imgURL}
-          alt={notice.title}
-          className={css.noticeImage}
-        />
+        <img src={notice.imgURL} alt={notice.title} className={css.noticeImage} />
       </div>
       <div className={css.noticeContent}>
         <div className={css.header}>
@@ -120,9 +99,7 @@ export default function NoticesItem({
               onClick={handleFavorite}
               disabled={isLoading}
             >
-              <svg
-                className={`${css.heart} ${isFavorite ? css.heartActive : ""}`}
-              >
+              <svg className={`${css.heart} ${isFavorite ? css.heartActive : ""}`}>
                 <use href="/sprite.svg#icon-heart"></use>
               </svg>
             </button>
