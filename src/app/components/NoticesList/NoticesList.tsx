@@ -4,6 +4,7 @@ import { useAuth } from "../../../context/useAuth";
 import NoticesItem from "../NoticesItem/NoticesItem";
 import ModalAttention from "../ModalAttention/ModalAttention";
 import ModalNotice from "../ModalNotice/ModalNotice";
+import { addViewedNotice } from "../../../services/viewedNotices";
 import css from "./NoticesList.module.css";
 
 interface NoticesListProps {
@@ -29,6 +30,7 @@ export default function NoticesList({ notices }: NoticesListProps) {
       setIsAttentionModalOpen(true);
       return;
     }
+    addViewedNotice(notice);
     setSelectedNotice(notice);
     setIsNoticeModalOpen(true);
   };

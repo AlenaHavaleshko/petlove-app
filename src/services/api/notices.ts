@@ -10,7 +10,10 @@ export async function fetchFavorites(): Promise<import("../types/notices").Notic
   });
   if (!response.ok) throw new Error('Failed to fetch favorites');
   const data = await response.json();
-  return Array.isArray(data.noticesFavorites) ? data.noticesFavorites : [];
+  // API returns noticesFavorites for notices favorites
+  if (Array.isArray(data.noticesFavorites)) return data.noticesFavorites;
+  if (Array.isArray(data.favorites)) return data.favorites;
+  return [];
 }
 
 export async function fetchNotices({
