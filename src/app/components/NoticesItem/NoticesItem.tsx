@@ -120,18 +120,20 @@ export default function NoticesItem({
                   <use href="/sprite.svg#icon-trash"></use>
                 </svg>
               </button>
-            ) : !hideFavorite && (
-              <button
-                className={css.favoriteBtn}
-                onClick={handleFavorite}
-                disabled={isLoading}
-              >
-                <svg
-                  className={`${css.heart} ${isFavorite ? css.heartActive : ""}`}
+            ) : (
+              !hideFavorite && (
+                <button
+                  className={css.favoriteBtn}
+                  onClick={handleFavorite}
+                  disabled={isLoading}
                 >
-                  <use href="/sprite.svg#icon-heart"></use>
-                </svg>
-              </button>
+                  <svg
+                    className={`${css.heart} ${isFavorite ? css.heartActive : ""}`}
+                  >
+                    <use href="/sprite.svg#icon-heart"></use>
+                  </svg>
+                </button>
+              )
             )}
           </div>
         </div>

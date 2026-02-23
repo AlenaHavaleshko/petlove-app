@@ -10,7 +10,7 @@ import { useAuth } from "../../../context/useAuth";
 function Header() {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
   const location = useLocation();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
 
   const isHome = location.pathname === "/home";
   return (
@@ -53,6 +53,25 @@ function Header() {
               <UserNav isHome={isHome} />
             ) : (
               <AuthNav isHome={isHome} />
+            )}
+            {isAuthenticated && (
+              <Link to="/profile" className={css.mobile_avatar}>
+                {user?.avatar ? (
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className={css.mobile_avatar_img}
+                  />
+                ) : (
+                  <svg
+                    className={css.mobile_avatar_icon}
+                    width={24}
+                    height={24}
+                  >
+                    <use href="/sprite.svg#icon-user" />
+                  </svg>
+                )}
+              </Link>
             )}
             <button
               className={css.header_menu_btn_home}

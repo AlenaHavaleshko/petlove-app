@@ -107,12 +107,7 @@ input[type="date"] {
   box-sizing: border-box;
 }
 
-.sex_radio input[value="female"]:checked+.sex_circle .sex_icon,
-.sex_radio input[value="male"]:checked+.sex_circle .sex_icon {
-  stroke: #fff !important;
-  color: #fff !important;
-  fill: none !important;
-}
+
 
 .form_photo {
   width: 120px;
@@ -426,9 +421,9 @@ input[type="date"] {
 .sex_radio input[value="female"]:checked+.sex_circle .sex_icon,
 .sex_radio input[value="male"]:checked+.sex_circle .sex_icon,
 .sex_radio input[value="other"]:checked+.sex_circle .sex_icon {
-  color: #fff;
-  fill: #fff;
-  stroke: #fff;
+  color: #fff !important;
+  fill: #fff !important;
+  stroke: #fff !important;
 }
 
 .form_icon_second {

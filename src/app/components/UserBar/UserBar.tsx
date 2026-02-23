@@ -12,11 +12,17 @@ function UserBar({ isHome }: UserBarProps) {
   return (
     <Link to="/profile" className={css.user_bar}>
       <div className={css.user_avatar}>
-        <svg className={css.avatar_icon} width={20} height={20}>
-          <use href="/sprite.svg#icon-user" />
-        </svg>
+        {user?.avatar ? (
+          <img src={user.avatar} alt={user.name} className={css.avatar_img} />
+        ) : (
+          <svg className={css.avatar_icon} width={20} height={20}>
+            <use href="/sprite.svg#icon-user" />
+          </svg>
+        )}
       </div>
-      <span className={isHome ? css.user_name_home : css.user_name}>{user?.name || "User"}</span>
+      <span className={isHome ? css.user_name_home : css.user_name}>
+        {user?.name || "User"}
+      </span>
     </Link>
   );
 }
