@@ -28,6 +28,12 @@
   margin: 0;
 }
 
+.list > li {
+  width: 320px;
+  min-height: 422px;
+  overflow: hidden;
+}
+
 @media (min-width: 768px) {
   .tabs {
     gap: 12px;
@@ -39,9 +45,8 @@
   }
 
   .list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 320px);
     gap: 24px;
   }
 }
