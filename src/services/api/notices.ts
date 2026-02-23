@@ -5,11 +5,12 @@ import type { NoticesResponse, FetchNoticesParams, Location } from "../types/not
 export async function fetchFavorites(): Promise<import("../types/notices").Notice[]> {
   const token = localStorage.getItem('petlove_token');
   if (!token) throw new Error('No authentication token found. Please login first.');
-  const response = await fetch(`${API_BASE_URL}/notices/favorites`, {
+  const response = await fetch(`${API_BASE_URL}/users/current`, {
     headers: { 'Authorization': `Bearer ${token}` },
   });
   if (!response.ok) throw new Error('Failed to fetch favorites');
-  return response.json();
+  const data = await response.json();
+  return Array.isArray(data.noticesFavorites) ? data.noticesFavorites : [];
 }
 
 export async function fetchNotices({

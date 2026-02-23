@@ -11,7 +11,9 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     if (!token) return;
 
     fetchFavorites()
-      .then(setFavorites)
+      .then((data) => {
+        setFavorites(Array.isArray(data) ? data : []);
+      })
       .catch(console.error);
   }, []);
 

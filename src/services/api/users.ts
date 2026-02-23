@@ -1,4 +1,6 @@
-// Обновить профиль пользователя (включая аватар)
+import { API_BASE_URL } from "../apiBase";
+
+// Оновити профіль користувача (включаючи аватар)
 export async function updateUserProfile(data: { name?: string; email?: string; phone?: string; avatar?: string }) {
   const token = localStorage.getItem("petlove_token");
   const response = await fetch(`${API_BASE_URL}/users/current/edit`, {
@@ -14,7 +16,7 @@ export async function updateUserProfile(data: { name?: string; email?: string; p
   }
   return response.json();
 }
-// Получить список питомцев пользователя
+// Отримати список питомцев користувача
 export async function getUserPets() {
   const token = localStorage.getItem("petlove_token");
   const response = await fetch(`${API_BASE_URL}/users/current/full`, {
@@ -29,7 +31,7 @@ export async function getUserPets() {
   return data.pets || [];
 }
 
-// Удалить питомца пользователя
+// Видалити питомця користувача
 export async function deleteUserPet(petId: string) {
   const token = localStorage.getItem("petlove_token");
   const response = await fetch(`${API_BASE_URL}/users/current/pets/remove/${petId}` , {
@@ -44,7 +46,7 @@ export async function deleteUserPet(petId: string) {
   return true;
 }
 
-// Добавить питомца пользователя
+// Додати питомця користувача
 export async function addUserPet(pet: {
   name: string;
   title: string;
@@ -69,7 +71,22 @@ export async function addUserPet(pet: {
   return response.json();
 }
 
-import { API_BASE_URL } from "../apiBase";
+// Отримати поточного користувача (і фейворітс теж)
+export async function GetUserCurrent() {
+  const token = localStorage.getItem("petlove_token");
+  if (!token) throw new Error("User is not logged in");
+  const response = await fetch(`${API_BASE_URL}/users/current`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch user data");
+  }
+  return response.json();
+}
+
+
 
 export interface LoginCredentials {
   email: string;
@@ -90,6 +107,7 @@ export interface AuthResponse {
     avatar?: string;
   };
 }
+
 
 export async function loginUser(credentials: LoginCredentials): Promise<AuthResponse> {
   console.log('loginUser called', { 
