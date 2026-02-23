@@ -1,6 +1,9 @@
 import { useState } from "react";
 import type { Notice } from "../../../services/types/notices";
-import { addToFavorites, removeFromFavorites } from "../../../services/api/notices";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../../services/api/notices";
 import { useFavorites } from "../../../context/useFavorites";
 import css from "./NoticesItem.module.css";
 
@@ -8,9 +11,17 @@ interface NoticesItemProps {
   notice: Notice;
   onAuthAction: () => boolean;
   onLearnMore: (notice: Notice) => void;
+  hideFavorite?: boolean;
+  showRemoveBtn?: boolean;
 }
 
-export default function NoticesItem({ notice, onAuthAction, onLearnMore }: NoticesItemProps) {
+export default function NoticesItem({
+  notice,
+  onAuthAction,
+  onLearnMore,
+  hideFavorite = false,
+  showRemoveBtn = false,
+}: NoticesItemProps) {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +61,11 @@ export default function NoticesItem({ notice, onAuthAction, onLearnMore }: Notic
   return (
     <li className={css.noticeItem}>
       <div className={css.imageWrapper}>
-        <img src={notice.imgURL} alt={notice.title} className={css.noticeImage} />
+        <img
+          src={notice.imgURL}
+          alt={notice.title}
+          className={css.noticeImage}
+        />
       </div>
       <div className={css.noticeContent}>
         <div className={css.header}>
@@ -94,15 +109,30 @@ export default function NoticesItem({ notice, onAuthAction, onLearnMore }: Notic
             <button className={css.learnMoreBtn} onClick={handleLearnMore}>
               Learn more
             </button>
-            <button
-              className={css.favoriteBtn}
-              onClick={handleFavorite}
-              disabled={isLoading}
-            >
-              <svg className={`${css.heart} ${isFavorite ? css.heartActive : ""}`}>
-                <use href="/sprite.svg#icon-heart"></use>
-              </svg>
-            </button>
+            {showRemoveBtn ? (
+              <button
+                className={css.favoriteBtn}
+                onClick={handleFavorite}
+                disabled={isLoading}
+                title="Remove from favorites"
+              >
+                <svg className={css.trashIcon}>
+                  <use href="/sprite.svg#icon-trash"></use>
+                </svg>
+              </button>
+            ) : !hideFavorite && (
+              <button
+                className={css.favoriteBtn}
+                onClick={handleFavorite}
+                disabled={isLoading}
+              >
+                <svg
+                  className={`${css.heart} ${isFavorite ? css.heartActive : ""}`}
+                >
+                  <use href="/sprite.svg#icon-heart"></use>
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -7,14 +7,13 @@ import { getViewedNotices } from "../../../services/viewedNotices";
 
 export default function MyNotices() {
   const [activeTab, setActiveTab] = useState<"favorites" | "viewed">(
-    "favorites"
+    "favorites",
   );
 
   const { favorites } = useFavorites();
   const [viewed] = useState<Notice[]>(() => getViewedNotices());
 
-  const notices: Notice[] =
-    activeTab === "favorites" ? favorites : viewed;
+  const notices: Notice[] = activeTab === "favorites" ? favorites : viewed;
 
   return (
     <div className={css.myNotices}>
@@ -48,6 +47,8 @@ export default function MyNotices() {
               notice={notice}
               onAuthAction={() => true}
               onLearnMore={() => {}}
+              hideFavorite={activeTab === "viewed"}
+              showRemoveBtn={activeTab === "favorites"}
             />
           ))}
         </ul>
